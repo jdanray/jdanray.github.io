@@ -1,0 +1,25 @@
+<p>A polygon is convex if a line segment that joins any two points in the polygon is an edge of the polygon or lies inside of the polygon. The convex hull of a set of points is a subset of the set of points that forms the smallest convex polygon in which every point in the set of points is either on the boundary of the polygon or in the interior of the polygon.</p>
+
+<p>To find the convex hull, the Graham Scan first places into the hull a point that must belong in it. Then it incrementally adds new points to the hull.</p>
+
+<p>The point with the lowest y-coordinate must belong in the hull. So, the Graham Scan first places into the hull the point with the lowest y-coordinate. If there are multiple points that all have the lowest y-coordinate, then the algorithm picks the one that has the lowest x-coordinate. </p>
+
+<p>The remaining points are sorted by <a href="http://mathworld.wolfram.com/PolarAngle.html">polar angle</a> around this leftmost lowest point, and each of the remaining points is scanned. If a point lies to the left of the line segment that joins the second-to-last point in the hull and the last point in the hull, then the point is added to the hull. If it does not, then the last point in the hull is removed until it does. Then it is added to the hull.</p>
+
+<p>I implemented the Graham Scan in Java. <a href="https://github.com/jdanray/blog-code/tree/master/graham_scan">My implementation</a> is up at <a href="https://github.com/jdanray/blog-code/">my GitHub</a>.</p>
+
+<p>Further references:</p>
+
+<p>Graham, R. L. <a href="http://www.math.ucsd.edu/~ronspubs/72_10_convex_hull.pdf">"An Efficient Algorithm for Determining the Convex Hull of a Finite Planar Set."</a> <i>Information Processing Letters 1</i> (1972): 132-133. Amsterdam: North-Holland Publishing Company.</p>
+
+<p>Skiena, Steven S., and Miguel A. Revilla. <i>Programming Challenges: The Programming Contest Training Manual</i>. New York: Springer-Verlag, 2003.</p>
+
+<p>https://en.wikipedia.org/wiki/Graham_scan</p>
+
+<p>http://courses.csail.mit.edu/6.006/spring11/rec/rec24.pdf</p>
+
+<p>http://algs4.cs.princeton.edu/99hull/GrahamScan.java.html</p>
+
+<p>http://algs4.cs.princeton.edu/99hull/Point2D.java.html</p>
+
+<p>http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/</p>

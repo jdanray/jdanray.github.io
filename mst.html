@@ -1,0 +1,37 @@
+<p>A minimum spanning tree of a weighted connected graph is a spanning tree whose weight is less than or equal to the weight of every other spanning tree of that graph.</p>
+
+<p>But what does <strong>that</strong> mean? Because that statement might not be terribly clear, let's break it down:</p>
+
+<p>Informally, a <em>graph</em> is a set of points called <em>vertices</em> that are joined by lines called <em>edges</em>. Formally, a graph is an ordered pair of sets (V, E), where V is a finite set of vertices and E is subset of V x V.</p>
+
+<p>A <em>weighted graph</em> has a number associated with each edge of the graph. Each number is a <em>weight</em> for that edge. The <em>weight of a graph</em> is the sum of all those numbers.</p>
+
+<p>A <em>walk</em> is a finite sequence of vertices in which each pair of neighboring vertices has an edge between them.</p>
+
+<p>A graph is <em>connected</em> if and only if, for every pair of vertices u and v, there is a walk from u to v.</p>
+
+<p>A <em>path</em> is a walk that never visits the same vertex twice.</p>
+
+<p>A <em>cycle</em> is a path from some vertex back to itself. An <em>acyclic graph</em> has no cycles.</p>
+
+<p>A <em>tree</em> is a connected, acyclic graph.</p>
+
+<p>A tree <em>spans</em> a connected graph if and only if it contains all of the vertices of that graph. A <em>spanning tree</em> of a connected graph is a tree that spans the graph.</p>
+
+<p>Now, let's use these definitions to unpack our initial statement of what a minimum spanning tree is:</p>
+
+<p>Obviously, a minimum spanning tree is a tree. Therefore, a minimum spanning tree is a graph that is [i] connected and [ii] acyclic. That means that [i] each pair of the graph's vertices has a walk between them and that [ii] none of the graph's vertices has a path going back to itself.</p>
+
+<p>As a spanning tree, a minimum spanning tree spans a connected graph. That means that it contains all of the vertices of that graph.</p>
+
+<p>As a<em> </em>minimum spanning tree, a minimum spanning tree has a weight. Its weight is the sum of the weights of its edges. (To be clear, it derived its edges from the graph that it spans.)</p>
+
+<p>What makes a minimum spanning tree be a <strong>minimum</strong> spanning tree is that its weight is less than or equal to the weight of every other spanning tree that spans that graph.</p>
+
+<p>Hopefully, that clears up what a minimum spanning tree is. Now for the next question: Why are minimum spanning trees important?</p>
+
+<p>Let's say there is a set of computers that you want to network together. Because it's expensive to network computers together, you want to find the least expensive way to connect all of them. In other words, you want to construct a minimum spanning tree!</p>
+
+<p>In general, minimum spanning trees let you connect a set of things that are costly to connect at the least possible expense. You can apply minimum spanning trees to road construction, social networks, circuit design, etc., etc.</p>
+
+<p>Now your question should be: How do I find minimum spanning trees? The two most popular algorithms are Prim's algorithm and Kruskal's algorithm. I go over Kruskal's algorithm in <a href="kruskal.html">this post</a>.</p>

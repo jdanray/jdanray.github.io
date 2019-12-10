@@ -1,0 +1,17 @@
+<p>Say that, if the characters of X appear in Y in the same order that they appear in X, then X is hidden in Y. So, if X is "ABC" and Y is "HAPPYBIRTHDAYCACEY", then X is hidden in Y. However, if X is "ABC" and Y is "TRAGICBIRTHDAYCACEY", then X is not hidden in Y, because "C" appears before "B" in "TRAGICBIRTHDAYCACEY". Of course, if X is "ABC" and Y is "HAPPYBIRTHDAY", then X is not hidden in Y, because "C" never appears in "HAPPYBIRTHDAY".</p>
+
+<p>Now, given two strings X and Y, decide whether X is hidden in Y.</p>
+
+<p>In <a href="http://www.icpc-midcentral.us/">the ACM-ICPC's 2015 Mid-Central USA Programming Contest</a>, this problem appeared in the guise of <a href="http://www.icpc-midcentral.us/archives/2015/mcpc2015.pdf">deciding whether a given password is hidden inside a given message</a>. My solution to the problem is recursive:</p>
+
+<p>1) If X is empty, then it is vacuously true that X is hidden in Y.</p>
+
+<p>2) If X is nonempty and Y is empty, then it is false that X is hidden in Y.</p>
+
+<p>3) If the first character of X and the first character of Y are the same, then continue the procedure on the rest of X and the rest of Y.</p>
+
+<p>4) If the first character of X and the first character of Y are different, but the first character of Y appears somewhere else in X, then it is false that X is hidden in Y.</p>
+
+<p>5) If none of the above conditions obtains, then continue the procedure on X and the rest of Y.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/problems/hidden.py">My Python code</a> and <a href="https://github.com/jdanray/blog-code/blob/master/problems/hidden.sc">my Scheme code</a> are both up at <a href="https://github.com/jdanray/blog-code/">my GitHub</a>.</p>

@@ -1,0 +1,19 @@
+<p>A stack is a container, like an array. However, each element of an array can be accessed directly and in constant time. In contrast, the elements of a stack obey the  last-in, first-out or first-in, last-out principle.</p>
+
+<p>So, let's go over an example. Say that you have an array A = {5, 3, 2, 4}. You can access any element in A directly. For instance, A[0] = 5, A[2] = 2, and so on. And when you access an element in this way, you access it in constant time. That means that, no matter how big the array is, you always access the element that you want in the same amount of time. We can contrast this with a stack.</p>
+
+<p>The classic metaphor for a stack is simply a stack of cafeteria trays. When you take a tray off a stack of cafeteria trays, you take the tray that's at the top of the stack. The tray that's at the top of the stack is the tray that was placed on the stack last. So, the first tray that you take off the stack is the tray that was placed on the stack last. So, the stack follows the last-in, first-out principle.</p>
+
+<p>The last tray that you take off the stack is the tray that's at the bottom of the stack, and the tray that's at the bottom of the stack is the tray that was put down first. So, the last tray that you take off the stack is the tray that was put down first. So, the stack follows the first-in, last-out principle.</p>
+
+<p>The concept of a stack in computer science is an abstraction of something that people observe in lunchrooms every day. The stack is a fundamental data structure in computer science.</p>
+
+<p>Typically stacks are implemented using functions called "pop" and "push". When you push an element onto a stack, you put the element on the top of the stack. When you pop a stack, you take the top element off. Consequently, you cannot access the element that you're looking for directly, like you can with an array. You have to pop the stack until you find the element that you want.</p>
+
+<p>In a standard implementation, each pop takes the same amount of time. However, you can access the element that you want in one pop only if it is at the top of the stack, and the element that you want is not guaranteed to be at the top of the stack. In the worst case, your element is at the very bottom of the stack. So, if there are N elements in the stack, then you have to pop the stack N times in the worst case. So, while a standard implementation of pop is O(1), it can be O(n) time before you access the element that you want to access.</p>
+
+<p>Nevertheless, stacks often come in handy. For example, you can implement a <a href="https://en.wikipedia.org/wiki/Pushdown_automaton">pushdown automaton</a> with a stack.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/datastructures/stack.h">Here is my C++ implementation of the stack</a>. It is on <a href="https://github.com/jdanray/blog-code">my GitHub</a>.</p>
+
+<p>Both <a href="https://www.sgi.com/tech/stl/stl_introduction.html">STL</a> and <a href="http://www.boost.org/">Boost</a> include stacks. I implemented my own class of stacks solely for educational purposes.</p>

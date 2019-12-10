@@ -1,0 +1,29 @@
+<p>The stable marriage problem can be stated as follows:</p>
+
+<p>Given (i) two sets that have the same number of elements and (ii) a set of preferences for each element, find a stable matching between the two sets.</p>
+
+<p>That is a very general formulation of the problem. The reason that the problem is called "the stable marriage problem" is that one typically formulates the problem in a way similar to the following:</p>
+
+<p>Consider a population of people. Half of them are men, and half of them are women. Each man has a list of all of the women ranked according to his preferences, and each woman has a list of all of the men ranked according to her preferences. Find a stable matching that marries everybody off.</p>
+
+<p>In this context, a <i>matching</i> is an assignment of men and women to each other. A matching is <i>unstable</i> if there is a man and a woman who both prefer each other to their spouses. So, for example, if Arthur and Barbara both prefer each other to their spouses, then their marriages are at risk.</p>
+
+<p>A matching is <i>stable</i> if it is not unstable. In a stable matching, nobody has an incentive to seek a different spouse. So, if a man prefers another woman to his wife, he cannot marry her, because she prefers her husband to him.</p>
+
+<p>Everybody is not guaranteed to get their most preferred match. For instance, although multiple men could most prefer the same woman, only one man can marry her. So, the problem is simply to find a matching that is stable. And, in 1962, David Gale and Lloyd Shapley provided a way to do that.</p>
+
+<p>The Gale-Shapley algorithm consists of a series of rounds. At each round, each unengaged man proposes to the woman that he prefers the most out of all of the women that have not rejected him. Each woman accepts the proposal of the man that she prefers the most out of all the men that have proposed to her. She rejects every other man who proposed to her. If she had already accepted another man's proposal, then she rejects that man, too, and he becomes unengaged. This process continues until no man can propose anymore.</p>
+
+<p>The process is guaranteed to end. If we have n men and n women, then each of the n men can propose to only n women. So, only n ^ 2 proposals can occur. And at least one man proposes at each round. So, the process terminates after O(n ^ 2) rounds.</p>
+
+<p>The resultant matching is guaranteed to be stable. To see this, suppose that it is unstable. Then there is a man (call him "Arthur") and a woman (call her "Barbara") who both prefer each other to their spouses (call them "Cate" and "Dave"). So, Arthur prefers Barbara to his wife Cate, and Barbara prefers Arthur to her husband Dave. But if Arthur prefers Barbara to Cate, then Arthur proposed to Barbara before he proposed to Cate, since men propose to women in order of preference. Barbara may have accepted Arthur's proposal at first, but, because Barbara is married to Dave, Barbara must have rejected Arthur and accepted Dave's proposal, which means that Barbara prefers Dave to Arthur. So, Barbara and Arthur do not both prefer each other to their spouses, because Barbara does not prefer Arthur to her spouse. So, we have a contradiction. Therefore, there is not a man and a woman who both prefer each other to their spouses, and the matching is stable.</p>
+
+<p>As the general formulation of the problem suggests, the stable marriage problem applies to more than just pairing off men and women. It appears in many guises in many places. For example, in 2004, New York City began using a version of the Gale-Shapley algorithm to match eighth graders and NYC public high schools, and the U.S. medical establishment has long used a version of the Gale-Shapley algorithm to match medical students and residency programs.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/algos/gale_shapley.py">My implementation of the Gale-Shapley algorithm</a> is up at <a href="https://github.com/jdanray/blog-code/">my GitHub</a>.</p>
+
+<p>Sources:</p>
+
+<p>http://www.ams.org/samplings/feature-column/fc-2015-03
+http://www1.cs.columbia.edu/~evs/intro/stable/writeup.html
+http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/readings/MIT6_042JF10_notes.pdf</p>

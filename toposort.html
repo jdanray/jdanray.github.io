@@ -1,0 +1,38 @@
+<p>Let's say that you are getting dressed in the morning. You know that you can't put your clothes on in just any order. For example:</p>
+
+<p>-You must put on your socks before you put on your shoes
+-You must put on your pants before you puts on your shoes
+-You must put on your pants before you put on your belt
+-You must put on your shirt before you put on your belt</p>
+
+<p>We can use a <em>directed acyclic graph</em> to represent these facts.</p>
+
+<p>I defined what an acyclic graph is in <a href="mst.html">my post on minimum spanning trees</a>. To recap:</p>
+
+<p>A <em>graph</em> is a set of <em>vertices</em> connected by a set of <em>edges</em>.</p>
+
+<p>In our above example, vertices represent items of clothing (i.e., socks, shoes, pants, belt, and shirt), and edges represent a <em>must-put-on-before</em> relation. So, for example, because you must put on your socks before you put on your shoes, an edge connects socks and shoes.</p>
+
+<p>But, to properly represent the <em>must-put-on-before</em> relation, the edges must have direction. If there were just an edge connecting socks and shoes, then we couldn't tell from the graph whether you must put your socks on before your shoes or your shoes on before your socks! So, the graph must be <em>directed</em>.</p>
+
+<p>A graph has a <em>cycle</em> if there is a path from some vertex back to itself. So, for example, say that there is the path {(socks, shoes), (shoes, belt), (belt, socks)}. Then you must put your socks on before your shoes, your shoes on before your belt, and your belt on before your socks. So, you must put your socks on before you put your socks on. And, well, you can't do that. So, the graph can't have cycles in it. In other words, it must be <em>acyclic</em>.</p>
+
+<p>A directed acyclic graph (or dag) is just a graph that is directed and acyclic.</p>
+
+<p>Dags come up all the time. They can represent temporal dependency, causality, hierarchy, precedence, and a whole lot more. In general, they can represent <a href="http://mathworld.wolfram.com/PartialOrder.html">partial orders</a>.</p>
+
+<p>A graph has a topological ordering if and only if the graph is a dag. So, now that I have (hopefully) clarified what a dag is, let's talk about topological orderings.</p>
+
+<p>I know that I must put on my socks before I put on my shoes, that I must put on my pants before I put on my shoes, etc., etc. I am aware of all of these temporal dependencies. And that is all well and good, but now I want to know an exact order in which I can put the clothes on. In other words, I want to find a topological ordering of the dag.</p>
+
+<p>In this case, I can put my clothes on in this order: Pants, socks, shoes, shirt, belt.</p>
+
+<p>The above order is a topological ordering of the dag. In a topological ordering, you order the vertices of a dag one after another in such a way that, if there is a directed edge from vertex u to vertex v in the dag, vertex u comes before vertex v in the topological ordering.</p>
+
+<p>There are often several topological orderings of a dag. For example, I can put my clothes on in this order, too: Socks, pants, shirt, belt, shoes. </p>
+
+<p>Topological orderings come in handy in a lot of situations. The classic example is when you are given a set of temporal constraints and you want to devise a schedule. That is actually what we did above when we came up with the order in which to put the clothes on.</p>
+
+<p>There are a number of ways to topologically order a dag. When I implemented topological ordering in Python, I used <a href="https://en.wikipedia.org/wiki/Depth-first_search">depth-first search</a>. Depth-first search's cousin is <a href="bst.html">breadth-first search</a>.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/algos/topo_order.py">My Python implementation of topological ordering</a> is up at <a href="https://github.com/jdanray">my GitHub</a>.</p>

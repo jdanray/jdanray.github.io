@@ -1,0 +1,16 @@
+<p>Given an integer N > 1, you want to find all of the prime numbers from 1 to N. For example, if N = 11, then you get {2, 3, 5, 7, 11}.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">The Sieve of Eratosthenes</a> is a simple way to solve this problem. The basic idea behind it is this: Construct the list of all integers from 1 to N, and remove the composite numbers.</p>
+
+<p>It is easy to construct the list of all integers from 1 to N. So, the question is: How do you remove the composite numbers?</p>
+
+<p>It is a fact of number theory that every composite number k has a prime factor that is less than or equal to sqrt(k). To see this, consider any composite number k = mn. If both m > sqrt(k) and n > sqrt(k), then k < mn, which contradicts the fact that k = mn. So, k must have a prime factor that is less than or equal to sqrt(k).</p>
+
+<p>So, every composite number from 1 to N must have a prime factor that is less than or equal to sqrt(N). So, just iterate over each prime number from 1 to sqrt(N) and remove all of its multiples in the list. In that way you remove all of the composite numbers from the list.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/algos/sieve.c">I implemented the Sieve of Eratosthenes in C</a>, and <a href="https://github.com/jdanray/blog-code/blob/master/algos/sieve.py">I implemented the Sieve of Eratosthenes in Python</a>. Both of my implementations are up at <a href="https://github.com/jdanray/blog-code">my GitHub</a>.</p>
+
+<p>References:</p>
+
+<p>https://proofwiki.org/wiki/Sieve_of_Eratosthenes
+http://pages.pacificcoast.net/~cazelais/222/sieve.pdf</p>

@@ -1,0 +1,19 @@
+<p>Now that <a href="queues.html">I've written about queues</a>, I'll write about breadth-first search.</p>
+
+<p>Breadth-first search is a graph search algorithm. In a breadth-first search, we explore all of a vertex's adjacent vertices before proceeding to the adjacent vertices' adjacent vertices. Here is an outline of the algorithm:</p>
+
+<p>(1) Enqueue and mark the source vertex.</p>
+
+<p>(2) Dequeue a vertex. If the vertex is a match, then return the vertex. If the vertex is not a match, then enqueue and mark all of its unmarked adjacent vertices.</p>
+
+<p>(3) If the queue is empty, then return nil. If the queue is not empty, then go to (2).</p>
+
+<p>Breadth-first search uses <a href="mixes.html">a mix of two data structures</a>: a queue and an array.</p>
+
+<p>Unlike arrays, graphs are not linear. Whereas an element of an array can have only one succeeding element, a vertex in a graph can have many adjacent vertices. Consequently, we store vertices for later processing. And because we want to process a vertex before its adjacent vertices, we want to store vertices in a first-in, first-out data structure. In other words, we want to use a queue. So, we store unexplored vertices in a queue and process them as we remove them from the queue.</p>
+
+<p>Breadth-first search corresponds to level-order tree traversal, which goes through the elements of a tree level by level. In fact, breadth-first search gets its name from the fact that, when it explores a tree, it explores the breadth of the tree, traversing each level before going deeper. However, breadth-first search applies to all graphs.</p>
+
+<p>Because the graph doesn't have to be a tree, it might contain cycles. So, in a breadth-first search we could come to the same vertex again. To avoid processing a vertex more than once, we mark the vertices that we've visited.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/algos/bfs.rb">Here is my Ruby implementation of breadth-first search.</a></p>

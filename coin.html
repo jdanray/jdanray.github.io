@@ -1,0 +1,62 @@
+<p><b>The problem</b></p>
+
+<p>How many ways can you make change for a dollar?</p>
+
+<p>You have four denominations available. You can use quarters, dimes, nickels, and pennies, and you have an unlimited supply of all of them. Now find the total number of ways to make change for a dollar.</p>
+
+<p>There are a lot of ways to make change for a dollar. You could make change for a dollar with 100 pennies. You could use four quarters. You could use three quarters, two dimes, and one nickel. You could use one quarter, two dimes, four nickels, and 35 pennies. How do you find the total number of ways?</p>
+
+<p>In general, given a list of denominations D and an amount of money M, how do you find the total number of ways to make change for M?</p>
+
+<p>To answer that question, we're going to apply dynamic programming. First we'll take a top-down approach. Then we'll take a bottom-up approach.</p>
+
+<p><b>The top-down approach</b></p>
+
+<p>This is the top-down approach in a nutshell: If the given problem instance is trivial, then solve it; if it's not trivial, then cut it down to size.</p>
+
+<p>Given an instance of the problem, we continually reduce the size of the problem instance until we reach subinstances that are trivial to solve. To produce a solution to the original problem instance, we combine all of the solutions to the subinstances.</p>
+
+<p>Two parameters define the coin change problem: an amount of money (M) and a list of coin denominations (D). So, you can reduce a problem instance in two ways: decrease M or shorten D. We'll do both.</p>
+
+<p>We divide a nontrivial problem instance into these two subinstances:</p>
+
+<p>(1) Find the number of ways to make change for M using the first denomination in D
+(2) Find the number of ways to make change for M without using the first denomination in D</p>
+
+<p>To illustrate the procedure, let's say that M = 100 and D = [quarters, dimes, nickels, pennies]. </p>
+
+<p>If you use the first denomination in D, then you put in 25 cents. Now you only have to make change for $0.75. So, you reduce the size of the problem instance because you reduce the size of its first parameter, M.</p>
+
+<p>Let's say that you don't use the first denomination in D. So, you've effectively reduced D to [dimes, nickels, pennies]. So, you reduce the size of the given problem instance by reducing the second parameter of the problem.</p>
+
+<p>You continue dividing problem instances until you reach trivial subinstances. The coin change problem is trivial in these instances:</p>
+
+<p>-You must make change for no amount of money. There is only one way to solve that problem: You use no coins.
+-You must make change for a negative amount of money. There are zero ways to do that.
+-You must make change for some amount of money, but there are no denominations to choose coins from. There are no ways to do that, either.</p>
+
+<p>The subproblems are the same type of problem that the original problem is, because the subproblems require you to find the number of ways to make change for a given amount of money, too. So, we apply the same problem-solving procedure to the subproblems that we do to the original problem. Consequently, it is natural to use a recursive algorithm, like it was when <a href="hanoi.html">I implemented a solution to the Towers of Hanoi problem</a>. So, <a href="https://github.com/jdanray/blog-code/blob/master/problems/change.scm">I implemented the algorithm in Scheme</a>.</p>
+
+<p><b>The bottom-up approach</b></p>
+
+<p>We just examined a top-down approach to the coin change problem. We applied <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm">a divide-and-conquer strategy</a>. We started with a problem instance and divided it into smaller and smaller subinstances, working our way down until we arrived at problem instances that are trivial to solve.</p>
+
+<p>We can also employ a bottom-up approach, where we start with the solutions to the smallest subinstances of the problem and continually build on them until we get up to a solution to the entire problem instance.</p>
+
+<p>The top-down, recursive approach typically solves a lot of the same subinstances many times. The bottom-up approach does not. So, the bottom-up approach is typically a lot faster. In the specific case of the coin change problem, the bottom-up approach is O(mn), where m is the number of coin denominations and n is the amount of money (in cents). In contrast, if you don’t memoize the recursive algorithm, it runs in exponential time.</p>
+
+<p><a href="dpprobs.html">As I have in the past</a>, I used <a href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> to design just such a bottom-up strategy. Here is <a href="https://github.com/jdanray/blog-code/blob/master/problems/change.py">a Python program that implements it</a>. The program also features a naive recursive solution and a memoized recursive solution.</p>
+
+<p><b>Comments</b></p>
+
+<p>In the past, I also implemented a top-down, recursive algorithm and then designed and implemented a bottom-up algorithm. The algorithms find <a href="maxindsets.html">the maximum independent set of a tree</a>. Here is <a href="https://github.com/jdanray/blog-code/blob/master/dp/bottom_up_mis.py">the Python program that implements the bottom-up algorithm</a>. Here is <a href="https://github.com/jdanray/blog-code/blob/master/dp/top_down_mis.py">the Python program that implements the top-down algorithm</a>.</p>
+
+<p>The algorithms that solve the maximum independent set problem and the coin change problem have a feature in common: The use of inclusion and non-inclusion to neatly divide a problem instance into just two subinstances.</p>
+
+<p>The maximum independent set of a tree either includes the root of the tree or it doesn’t include the root of the tree. Exploiting that fact, you construct the independent set that includes the root and the independent set that doesn’t include the root, and then you take the larger of the two.</p>
+
+<p>Likewise, when you count the total number of ways that you can make change for some amount of money, you count the number of ways that you can make change for it if you include the first denomination on the list and the number of ways if you don't include that denomination.</p>
+
+<p>I have found that many dynamic programming approaches feature this technique. For example, an approach to the discrete knapsack problem features it, too: To compute the maximum value that the knapsack can contain, you compute the value when you include the current item and when you don’t include the current item, and then you take the larger of the two. <a href="https://github.com/jdanray/blog-code/blob/master/dp/discrete_knapsack.py">I have implemented that approach, too</a>.</p>
+
+<p><a href="http://erikdemaine.org/">MIT professor Erik Demaine</a> has said that <a href="https://www.youtube.com/watch?v=OQ5jsbhAv_M">an essential part of dynamic programming is guessing</a>. In his opinion, dynamic programming is "careful brute force". If you don’t know the solution to some problem, then try every possible solution and take a best one. And that is what is going on in the above procedures. The technique that all of these procedures deploy is just a clever way to partition the set of all possible solutions. Because of <a href="https://web.stanford.edu/~bobonich/glances%20ahead/IV.excluded.middle.html">the law of excluded middle</a>, a solution either includes an element or doesn't include it. So, we only have to process two possibilities.</p>

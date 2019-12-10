@@ -1,0 +1,15 @@
+<p>(If you aren't familiar with graph theory, I advise you to read <a href="mst.html">my post on minimum spanning trees</a>, where I define several important graph-theoretic terms that are relevant to this entry.)</p>
+
+<p>There exist several ways to represent a graph. For example, you can represent a graph as an adjacency matrix, as an edge list, or as an adjacency list. In <a href="https://github.com/jdanray/blog-code/blob/master/kruskal.py">my Python implementation of Kruskal's algorithm</a>, I used an edge list.</p>
+
+<p>Today I will discuss adjacency lists, because I'm going to use adjacency lists in some algorithms that I will post about soon.</p>
+
+<p>The idea of an adjacency list is very simple. In its most basic form, an adjacency list is just a collection of lists of adjacent vertices. So, if we want to know which vertices are adjacent to a vertex v and our adjacency list is L, then L[v] is the list of vertices adjacent to v.</p>
+
+<p>More precisely, L[v] is the list of vertices that v has an out-edge to. Adjacency lists can represent directed graphs. So, even if u is an element of L[v], v is not necessarily an element of L[u].</p>
+
+<p>If nonnegative integers name the vertices or if we want to create a correspondence between the nonnegative integers and the vertices, then you can very easily implement an adjacency list with an array of arrays. Similarly, you can also implement an adjacency list with an array whose cells point to a linked list of the adjacency vertices.</p>
+
+<p>If nonnegative integers don't name the vertices and we don't want to create a correspondence between the nonnegative integers and the vertices, then you can very easily implement an adjacency list with an associative array whose keys are the vertices' names and whose values are the names of adjacent vertices.</p>
+
+<p>You can implement the adjacency-list representation of a weighted graph with an array of arrays of vertex-weight pairs. For example, consider a weighted directed graph. Vertex #0 has an out-edge of weight 5 to Vertex #1 and an out-edge of weight 10 to Vertex #2, Vertex #1 has an out-edge of weight 15 to Vertex #2, and Vertex #2 has no out-edges. You can represent that graph as {{{1, 5}, {2, 10}}, {{2, 15}}, {}}.</p>

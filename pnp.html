@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <p>You have an easy job. Every hour your manager comes into your office and gives you a positive integer. Your job is simply to determine whether it's divisible by 4.</p>
 
 <p>You'd like to have a single method that decides whether any positive integer is divisible by 4. Because you're brimming with ingenuity, you build a machine that will solve every instance of the problem for you.</p>
@@ -6,9 +10,11 @@
 
 <p>At each step in the machine's operation, the read-write head reads the square underneath it. According to the symbol that the head reads and the state that the finite state control is in, the machine performs a set of actions:</p>
 
-<p>-The head may erase the symbol that is on the square and write a new one
--The head may move one square to the left or right
--The finite state control may change its state</p>
+<p>
+a) The head may erase the symbol that is on the square and write a new one <br />
+b) The head may move one square to the left or right <br />
+c) The finite state control may change its state
+</p>
 
 <p>If the machine enters a yes-state or a no-state, then it halts.</p>
 
@@ -36,9 +42,11 @@
 
 <p>So, you build a new machine. This machine is like the old machine, except it is fitted with a guessing module that has its own write-only head. In the first stage of the operation of the machine, the write-only head writes symbols on tape squares. In the second stage of the operation of the machine, the read-write head checks the symbols that the write-only head wrote. The machine solves the problem if:</p>
 
-<p>(1) For every instance of the problem whose answer is "yes", there is some guess that leads the checking stage to enter a yes-state, and</p>
+<p>
+(1) For every instance of the problem whose answer is "yes", there is some guess that leads the checking stage to enter a yes-state, and<br />
 
-<p>(2) For every instance of the problem whose answer is not "yes", there is no guess that leads the checking stage to enter a yes-state.</p>
+(2) For every instance of the problem whose answer is not "yes", there is no guess that leads the checking stage to enter a yes-state.
+</p>
 
 <p>A problem that this new machine can solve in polynomial time belongs to a class of problems called NP.</p>
 

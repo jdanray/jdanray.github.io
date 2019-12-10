@@ -1,30 +1,37 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <p>I implemented <a href="http://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html">the Miller-Rabin primality test</a> in Python/SAGE. <a href="https://github.com/jdanray/blog-code/blob/master/crypto/miller_rabin.py">My implementation</a> is up at <a href="http://github.com/jdanray/">my GitHub</a>.</p>
 
 <p>Given an integer n, the Miller-Rabin primality test determines whether n is not prime or is likely prime. Here is how the test goes:</p>
 
-<p>(1) Find integers k and q such that (2 ^ k)q = n – 1, where k > 0 and q is odd. Here is how you do that:</p>
+<p>
+(1) Find integers k and q such that (2 ^ k)q = n – 1, where k > 0 and q is odd. Here is how you do that:<br />
 
-<p>(1.1) Let k be a running count of the number of divisions that you make.</p>
+(1.1) Let k be a running count of the number of divisions that you make.<br />
 
-<p>(1.2) Divide n – 1 by 2, and increment k. Let q be the quotient.</p>
+(1.2) Divide n - 1 by 2, and increment k. Let q be the quotient.<br />
 
-<p>(1.2) While q is even, divide q by 2 and increment k.</p>
+(1.3) While q is even, divide q by 2 and increment k.
+</p>
 
 <p>For example, let’s say that n = 13. So, we divide 12 by 2. The quotient, of course, is 6. Because 6 is even, we divide 6 by 2, and we get 3. Because 3 is odd, we stop dividing, and q = 3. Because we divided two times, k = 2.</p>
 
-<p>We can test whether these values of k and q satisfy the equation (2 ^ k)q = n – 1 by substituting in those values. And we do find that (2 ^ 2) * 3 = 12.</p>
+<p>We can test whether these values of k and q satisfy the equation (2 ^ k)q = n - 1 by substituting in those values. And we do find that (2 ^ 2) * 3 = 12.</p>
 
-<p>(2) Pick a random integer between 1 and n – 1. Call it r.</p>
+<p>
+(2) Pick a random integer between 1 and n – 1. Call it r.<br />
 
-<p>(3) Test whether (r ^ q) % n = 1.</p>
+(3) Test whether (r ^ q) % n = 1.<br />
 
-<p>(3.1) If the test is passed, then n is likely prime.</p>
+(3.1) If the test is passed, then n is likely prime.<br />
 
-<p>(3.2) If the test is not passed, then, for each integer j between 0 and k – 1, inclusive, test whether (r ^ ((2 ^ j) * q)) % n = n – 1.</p>
+(3.2) If the test is not passed, then, for each integer j between 0 and k - 1, inclusive, test whether (r ^ ((2 ^ j) * q)) % n = n - 1.<br />
 
-<p>(3.2.1) If any j passes that test, then n is likely prime.</p>
+(3.2.1) If any j passes that test, then n is likely prime.<br />
 
-<p>(3.2.2) If no j passes that test, then n is not prime.</p>
+(3.2.2) If no j passes that test, then n is not prime.<br />
 
 <p>So, for example, again let n = 13, q = 3, and k = 2. Now let r = 9. Does (r ^ q) % n = 1?</p>
 

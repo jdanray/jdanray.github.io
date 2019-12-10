@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <p>You are given the voting records of a set of Democrats and the voting records of a set of Republicans. Now you are given the voting record of some unidentified politician, and you want to decide whether they are a Democrat or a Republican. How do you do that?</p>
 
 <p>One way to do it is to take the voting records that you're given and construct a <a href="https://en.wikipedia.org/wiki/Decision_tree_learning">decision tree</a>. Each internal node in the decision tree corresponds to an attribute of a politician's voting record, and each edge in the tree corresponds to a value of an attribute. To classify a given politician, you start at the root of the tree and determine the value of the corresponding attribute. Then you take the edge that corresponds to the value of that attribute. Now you're at a new node, and you repeat the process. In this way you walk down the tree until you reach a leaf which designates the party that the politician probably belongs to.</p>

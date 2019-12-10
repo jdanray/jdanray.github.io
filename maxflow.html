@@ -1,8 +1,14 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <p>A flow network is a <a href="http://mathworld.wolfram.com/DirectedGraph.html">directed graph</a> where each edge has a nonnegative capacity and two vertices are distinguished as a source and a sink. A flow in a flow network is a function that maps edges to real numbers and satisfies two requirements:</p>
 
-<p>(1) For each edge, the flow through the edge is equal to or less than the capacity of the edge.</p>
+<p>
+(1) For each edge, the flow through the edge is equal to or less than the capacity of the edge.<br />
 
-<p>(2) For each vertex other than the source and the sink, the amount of flow going into the vertex is equal to the amount of flow going out of it. The requirement does not apply to the source because the source does not have any flow going into it, and the requirement does not apply to the sink because the sink does not have any flow going out of it.</p>
+(2) For each vertex other than the source and the sink, the amount of flow going into the vertex is equal to the amount of flow going out of it. The requirement does not apply to the source because the source does not have any flow going into it, and the requirement does not apply to the sink because the sink does not have any flow going out of it.
+</p>
 
 <p>The value of a flow is the total amount of flow going into the sink. A maximum flow is a flow of maximum value. The maximum flow problem is to find a maximum flow, given a flow network.</p>
 

@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <p><b>The problem</b></p>
 
 <p>How many ways can you make change for a dollar?</p>
@@ -20,8 +24,10 @@
 
 <p>We divide a nontrivial problem instance into these two subinstances:</p>
 
-<p>(1) Find the number of ways to make change for M using the first denomination in D
-(2) Find the number of ways to make change for M without using the first denomination in D</p>
+<p>
+(1) Find the number of ways to make change for M using the first denomination in D<br />
+(2) Find the number of ways to make change for M without using the first denomination in D
+</p>
 
 <p>To illustrate the procedure, let's say that M = 100 and D = [quarters, dimes, nickels, pennies]. </p>
 
@@ -31,9 +37,11 @@
 
 <p>You continue dividing problem instances until you reach trivial subinstances. The coin change problem is trivial in these instances:</p>
 
-<p>-You must make change for no amount of money. There is only one way to solve that problem: You use no coins.
--You must make change for a negative amount of money. There are zero ways to do that.
--You must make change for some amount of money, but there are no denominations to choose coins from. There are no ways to do that, either.</p>
+<p>
+-You must make change for no amount of money. There is only one way to solve that problem: You use no coins.<br />
+-You must make change for a negative amount of money. There are zero ways to do that.<br />
+-You must make change for some amount of money, but there are no denominations to choose coins from. There are no ways to do that, either.
+</p>
 
 <p>The subproblems are the same type of problem that the original problem is, because the subproblems require you to find the number of ways to make change for a given amount of money, too. So, we apply the same problem-solving procedure to the subproblems that we do to the original problem. Consequently, it is natural to use a recursive algorithm, like it was when <a href="hanoi.html">I implemented a solution to the Towers of Hanoi problem</a>. So, <a href="https://github.com/jdanray/blog-code/blob/master/problems/change.scm">I implemented the algorithm in Scheme</a>.</p>
 

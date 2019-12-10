@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <p><a href="https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1581">Marbles in Three Baskets</a> is an <a href="https://icpcarchive.ecs.baylor.edu/index.php">ACM-ICPC</a> problem. <a href="https://github.com/jdanray/blog-code/blob/master/problems/marbles.py">My solution to it</a> is up at <a href="https://github.com/jdanray">my GitHub</a>.</p>
 
 <p>Here are my thoughts on the problem and my solution. I start by stating the problem in my own words.</p>
@@ -14,11 +18,13 @@
 
 <p>In that model of problem-solving, a problem is defined by a few elements. Specifically, a problem is composed of:</p>
 
-<p>(1) A given state. This is the state of the problem when you start. So, for example, the given state of this ACM-ICPC problem is the number of marbles in each basket at the outset.</p>
+<p>
+(1) A given state. This is the state of the problem when you start. So, for example, the given state of this ACM-ICPC problem is the number of marbles in each basket at the outset. <br />
 
-<p>(2) A set of performable actions. The world of a problem isn't completely static. There's a set of actions that you can perform to transform one state into another. In this case, you can double the number of marbles in a basket. After you perform that action, the state of the problem has changed. One basket has twice as many marbles in it, and another basket has that many fewer marbles in it.</p>
+(2) A set of performable actions. The world of a problem isn't completely static. There's a set of actions that you can perform to transform one state into another. In this case, you can double the number of marbles in a basket. After you perform that action, the state of the problem has changed. One basket has twice as many marbles in it, and another basket has that many fewer marbles in it. <br />
 
-<p>(3) A goal state. Eventually, you have to stop. When you reach a state of the problem where your goal is met, you've completed your task. So, here, when each basket has the same number of marbles, we have reached our goal state.</p>
+(3) A goal state. Eventually, you have to stop. When you reach a state of the problem where your goal is met, you've completed your task. So, here, when each basket has the same number of marbles, we have reached our goal state.
+</p>
 
 <p>The given state and the set of performable actions induce a graph. The given state is a node in the graph. The performable actions are edges. Edges lead to new states, and each of those states are nodes with edges branching off of them. So, when you perform actions, you effectively explore a graph, moving from state to state, until you reach your goal state.</p>
 

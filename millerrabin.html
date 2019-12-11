@@ -7,7 +7,7 @@
 <p>Given an integer n, the Miller-Rabin primality test determines whether n is not prime or is likely prime. Here is how the test goes:</p>
 
 <p>
-(1) Find integers k and q such that (2 ^ k)q = n – 1, where k > 0 and q is odd. Here is how you do that:<br />
+(1) Find integers k and q such that (2 ^ k)q = n - 1, where k > 0 and q is odd. Here is how you do that:<br />
 
 (1.1) Let k be a running count of the number of divisions that you make.<br />
 
@@ -21,7 +21,7 @@
 <p>We can test whether these values of k and q satisfy the equation (2 ^ k)q = n - 1 by substituting in those values. And we do find that (2 ^ 2) * 3 = 12.</p>
 
 <p>
-(2) Pick a random integer between 1 and n – 1. Call it r.<br />
+(2) Pick a random integer between 1 and n - 1. Call it r.<br />
 
 (3) Test whether (r ^ q) % n = 1.<br />
 
@@ -32,12 +32,13 @@
 (3.2.1) If any j passes that test, then n is likely prime.<br />
 
 (3.2.2) If no j passes that test, then n is not prime.<br />
+</p>
 
 <p>So, for example, again let n = 13, q = 3, and k = 2. Now let r = 9. Does (r ^ q) % n = 1?</p>
 
 <p>Yes. It is true that (7 ^ 3) % 13 = 1. So, the Miller-Rabin primality test indicates that 13 is likely prime. This is a great result, because we know that 13 is prime.</p>
 
-<p>So, why does this algorithm work? Well, it is a fact of number theory that if n > 2 is prime, then, for all 1 < a < n – 1,</p>
+<p>So, why does this algorithm work? Well, it is a fact of number theory that if n > 2 is prime, then, for all 1 < a < n - 1,</p>
 
 <p>(a ^ q) % n = 1</p>
 
@@ -45,7 +46,7 @@
 
 <p>(a ^ ((2 ^ j) * q)) % n = n – 1, for some 0 <= j < k.</p>
 
-<p>Because one or the other condition must hold true for all 1 < a < n – 1, it must hold true for a random 1 < a < n – 1. So, if we pick a random integer between 1 and n – 1 and it meets one of the above conditions, then we have evidence that n is prime.</p>
+<p>Because one or the other condition must hold true for all 1 < a < n - 1, it must hold true for a random 1 < a < n - 1. So, if we pick a random integer between 1 and n – 1 and it meets one of the above conditions, then we have evidence that n is prime.</p>
 
 <p>However, we do not have proof that n is prime. For one thing, an above condition must hold for all integers between 1 and n – 1. But, when we take a random integer, we only examine one such integer. Moreover, an above condition must hold for all prime numbers greater than 2, but an above condition can hold for a composite number, too.</p>
 

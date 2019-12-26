@@ -12,15 +12,15 @@
 -You must put on your shirt before you put on your belt<br />
 </p>
 
-<p>We can use a <em>directed acyclic graph</em> to represent these facts.</p>
+<p>We can use a <b>directed acyclic graph</b> to represent these facts.</p>
 
 <p>I defined what an acyclic graph is in <a href="mst.html">my post on minimum spanning trees</a>. To recap:</p>
 
-<p>A <em>graph</em> is a set of <em>vertices</em> connected by a set of <em>edges</em>. In our above example, vertices represent items of clothing (i.e., socks, shoes, pants, belt, and shirt), and edges represent a <em>must-put-on-before</em> relation. So, for example, because you must put on your socks before you put on your shoes, an edge connects socks and shoes.</p>
+<p>A <b>graph</b> is a set of <b>vertices</b> connected by a set of <b>edges</b>. In our above example, vertices represent items of clothing (i.e., socks, shoes, pants, belt, and shirt), and edges represent a <b>must-put-on-before</b> relation. So, for example, because you must put on your socks before you put on your shoes, an edge connects socks and shoes.</p>
 
-<p>But, to properly represent the <em>must-put-on-before</em> relation, the edges must have direction. If there were just an edge connecting socks and shoes, then we couldn't tell from the graph whether you must put your socks on before your shoes or your shoes on before your socks! So, the graph must be <em>directed</em>.</p>
+<p>But, to properly represent the <b>must-put-on-before</b> relation, the edges must have direction. If there were just an edge connecting socks and shoes, then we couldn't tell from the graph whether you must put your socks on before your shoes or your shoes on before your socks! So, the graph must be <b>directed</b>.</p>
 
-<p>A graph has a <em>cycle</em> if there is a path from some vertex back to itself. So, for example, say that there is the path ((socks, shoes), (shoes, belt), (belt, socks)). Then you must put your socks on before your shoes, your shoes on before your belt, and your belt on before your socks. So, you must put your socks on before you put your socks on. And, well, you can't do that. So, the graph can't have cycles in it. In other words, it must be <em>acyclic</em>.</p>
+<p>A graph has a <b>cycle</b> if there is a path from some vertex back to itself. So, for example, say that there is the path ((socks, shoes), (shoes, belt), (belt, socks)). Then you must put your socks on before your shoes, your shoes on before your belt, and your belt on before your socks. So, you must put your socks on before you put your socks on. And, well, you can't do that. So, the graph can't have cycles in it. In other words, it must be <b>acyclic</b>.</p>
 
 <p>A directed acyclic graph (or DAG) is just a graph that is directed and acyclic.</p>
 

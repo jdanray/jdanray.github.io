@@ -16,7 +16,3 @@
 <p>Kruskal's algorithm is a greedy algorithm. Put simply, a greedy algorithm always does what's best at that moment. You might think that all algorithms should do that, but sometimes locally optimal decisions don't lead to global optima. Fortunately, they do in this case.</p>
 
 <p>Like I said in <a href="disjointset.html">my post on disjoint-set data structures</a>, Kruskal's algorithm uses a disjoint-set data structure. You assign each vertex a number from 0 to N - 1, where N is the number of vertices. Then you can use subset membership within the disjoint-set data structure to represent connection between vertices. Specifically, if the numbers for two vertices belong to the same subset, then the vertices are connected. This representation makes executing step (2) easy.</p>
-
-<p>Sources:</p>
-
-<p>http://www.cs.cornell.edu/~wdtseng/icpc/notes/graph_part4.pdf</p>

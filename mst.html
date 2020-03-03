@@ -7,21 +7,21 @@
 
 <p>But what does <strong>that</strong> mean? Because that statement might not be terribly clear, let's break it down:</p>
 
-<p>Informally, a <em>graph</em> is a set of points called <em>vertices</em> that are joined by lines called <em>edges</em>. Formally, a graph is an ordered pair of sets (V, E), where V is a finite set of vertices and E is subset of V x V.</p>
+<p>Informally, a <strong>graph</strong> is a set of points called <strong>vertices</strong> that are joined by lines called <strong>edges</strong>. Formally, a graph is an ordered pair of sets (V, E), where V is a finite set of vertices and E is subset of V x V.</p>
 
-<p>A <em>weighted graph</em> has a number associated with each edge of the graph. Each number is a <em>weight</em> for that edge. The <em>weight of a graph</em> is the sum of all those numbers.</p>
+<p>A <strong>weighted graph</strong> has a number associated with each edge of the graph. Each number is a <strong>weight</strong> for that edge. The <strong>weight of a graph</strong> is the sum of all those numbers.</p>
 
-<p>A <em>walk</em> is a finite sequence of vertices in which each pair of neighboring vertices has an edge between them.</p>
+<p>A <strong>walk</strong> is a finite sequence of vertices in which each pair of neighboring vertices has an edge between them.</p>
 
-<p>A graph is <em>connected</em> if and only if, for every pair of vertices u and v, there is a walk from u to v.</p>
+<p>A graph is <strong>connected</strong> if and only if, for every pair of vertices u and v, there is a walk from u to v.</p>
 
-<p>A <em>path</em> is a walk that never visits the same vertex twice.</p>
+<p>A <strong>path</strong> is a walk that never visits the same vertex twice.</p>
 
-<p>A <em>cycle</em> is a path from some vertex back to itself. An <em>acyclic graph</em> has no cycles.</p>
+<p>A <strong>cycle</strong> is a path from some vertex back to itself. An <strong>acyclic graph</strong> has no cycles.</p>
 
-<p>A <em>tree</em> is a connected, acyclic graph.</p>
+<p>A <strong>tree</strong> is a connected, acyclic graph.</p>
 
-<p>A tree <em>spans</em> a connected graph if and only if it contains all of the vertices of that graph. A <em>spanning tree</em> of a connected graph is a tree that spans the graph.</p>
+<p>A tree <strong>spans</strong> a connected graph if and only if it contains all of the vertices of that graph. A <strong>spanning tree</strong> of a connected graph is a tree that spans the graph.</p>
 
 <p>Now, let's use these definitions to unpack our initial statement of what a minimum spanning tree is:</p>
 
@@ -29,7 +29,7 @@
 
 <p>As a spanning tree, a minimum spanning tree spans a connected graph. That means that it contains all of the vertices of that graph.</p>
 
-<p>As a<em> </em>minimum spanning tree, a minimum spanning tree has a weight. Its weight is the sum of the weights of its edges. (To be clear, it derived its edges from the graph that it spans.)</p>
+<p>As a<strong> </strong>minimum spanning tree, a minimum spanning tree has a weight. Its weight is the sum of the weights of its edges. (To be clear, it derived its edges from the graph that it spans.)</p>
 
 <p>What makes a minimum spanning tree be a <strong>minimum</strong> spanning tree is that its weight is less than or equal to the weight of every other spanning tree that spans that graph.</p>
 

@@ -7,9 +7,9 @@
 
 <p>Here are my thoughts on the problem and my solution. I start by stating the problem in my own words.</p>
 
-<p>Imagine that you are playing a game. You are given three baskets: Basket A, Basket B, and Basket C. In each basket, there are zero or more marbles. So, for example, Basket A may have 3 marbles, Basket B may have 0 marbles, and Basket C may have 11 marbles.</p>
+<p>Imagine that you are playing a game. You are given three baskets: Basket A, Basket B, and Basket C. In each basket, there are zero or more marbles. So, for example, Basket A may have 3 marbles, Basket B may have 0 marbles, and Basket C may have 12 marbles.</p>
 
-<p>Your goal is to get the same number of marbles into each basket. So, for example, you want Basket A to have 3 marbles, Basket B to have 3 marbles, and Basket C to have 3 marbles.</p>
+<p>Your goal is to get the same number of marbles into each basket. So, for example, you want Basket A to have 5 marbles, Basket B to have 5 marbles, and Basket 5 to have 3 marbles.</p>
 
 <p>The game proceeds in rounds until every basket has the same number of marbles. At each round, you may double the number of marbles in some basket by taking that number of marbles out of another basket and putting them into the basket. So, for example, if Basket C has 4 marbles in it and Basket B has 7 marbles in it, then you may take 4 marbles out of Basket B and put them into Basket C. Now Basket C has double the number of marbles that it had before, while Basket B has 4 fewer.</p>
 
@@ -35,7 +35,7 @@
 
 <p>Because we want to get the same number of marbles into every basket in the minimum number of moves, we don't want simply a sequence of actions from the given state to the goal state, but rather the shortest sequence of actions. So, we want to find a shortest path. Consequently, we want to use something like <a href="bfs.html">breadth-first search</a>.</p>
 
-<p>The core of the program is a shortest-path algorithm that is a hybrid of breadth-first search and Dijkstra’s algorithm. It has similarities and dissimilarities to both.</p>
+<p>The core of the program is a shortest-path algorithm that is a hybrid of breadth-first search and <a href="dijkstra.html">Dijkstra’s algorithm</a>. It has similarities and dissimilarities to both.</p>
 
 <p>It's dissimilar to both breadth-first search and Dijkstra's algorithm, in that both of them operate on a given graph. Here, we are not given a graph. Instead, we are given an initial node, and we generate the graph on the fly, determining the children of each node as we go.</p>
 

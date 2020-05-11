@@ -6,10 +6,23 @@
     <description>Recent content on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:44:24 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 17:41:20 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>My Leetcode Repo</title>
+      <link>https://jdanray.github.io/post/leetcode/</link>
+      <pubDate>Mon, 11 May 2020 17:41:20 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/leetcode/</guid>
+      <description>
+      
+      I signed up to Leetcode a while back. Here is my profile.
+A little while ago, I had the bright idea to make a GitHub rep...
+      
+      </description>
+    </item>
     <item>
       <title>The ID3 Algorithm</title>
       <link>https://jdanray.github.io/post/id3/</link>

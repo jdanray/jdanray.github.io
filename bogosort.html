@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<p>Each week /r/DailyProgrammer posts three programming challenges of varying difficulty. The challenge on Monday was to write a bogosort.</p>
+<p>Each week <a href="https://www.reddit.com/r/dailyprogrammer/">/r/DailyProgrammer</a> posts three programming challenges of varying difficulty. The challenge on Monday was to write a bogosort.</p>
 
 <p>Bogosort is an especially ineffective sorting algorithm that is based on the generate-and-test (or trial-and-error) paradigm. When you bogosort a set, you generate a random permutation of the set until the set is in the order you want.</p>
 
@@ -25,6 +25,6 @@
 
 <p>The interesting thing here is the shuffling step. We are all familiar with shuffling cards. The aim of shuffling cards, of course, is to put the deck into random order. So, formally, shuffling is the generation of a random permutation of a finite set.</p>
 
-<p>What is an efficient algorithm for shuffling? The standard algorithm is the modern version of the Fisher-Yates algorithm, which runs in linear time. In the Fisher-Yates algorithm, we start at the last element in the set and then walk backwards down to the second element in the set. At each step, we swap our current element with a random element from the part of the set we haven't walked through yet.</p>
+<p>What is an efficient algorithm for shuffling? The standard algorithm is the modern version of the Fisher-Yates algorithm, which runs in linear time. In the Fisher-Yates algorithm, we start at the last element in the set and then walk backwards down to the next element in the set. At each step, we swap our current element with a random element from the part of the set we haven't walked through yet.</p>
 
 <p><a href="https://github.com/jdanray/blog-code/blob/master/sort/bogosort.rb">Here is my Ruby implementation of bogosort with Fisher-Yates shuffling.</a></p>

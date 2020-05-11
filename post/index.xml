@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Daniel Ray&#39;s Blog</title>
-    <link>http://example.org/post/</link>
-    <description>Recent content in Posts on example.org</description>
+    <link>https://jdanray.github.io/post/</link>
+    <description>Recent content in Posts on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 May 2020 00:44:24 -0500</lastBuildDate>
     
-    <atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jdanray.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The ID3 Algorithm</title>
-      <link>http://example.org/post/id3/</link>
+      <link>https://jdanray.github.io/post/id3/</link>
       <pubDate>Mon, 11 May 2020 00:44:24 -0500</pubDate>
       
-      <guid>http://example.org/post/id3/</guid>
+      <guid>https://jdanray.github.io/post/id3/</guid>
       <description>
       
       You are given the voting records of a set of Democrats and the voting records of a set of Republicans. Now you are given...

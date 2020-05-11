@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Ray&#39;s Blog</title>
-    <link>http://example.org/</link>
-    <description>Recent content on example.org</description>
+    <link>https://jdanray.github.io/</link>
+    <description>Recent content on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 May 2020 00:44:24 -0500</lastBuildDate>
     
-    <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jdanray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The ID3 Algorithm</title>
-      <link>http://example.org/post/id3/</link>
+      <link>https://jdanray.github.io/post/id3/</link>
       <pubDate>Mon, 11 May 2020 00:44:24 -0500</pubDate>
       
-      <guid>http://example.org/post/id3/</guid>
+      <guid>https://jdanray.github.io/post/id3/</guid>
       <description>
       
       You are given the voting records of a set of Democrats and the voting records of a set of Republicans. Now you are given...
@@ -24,10 +24,10 @@
     </item>
     <item>
       <title></title>
-      <link>http://example.org/about/</link>
+      <link>https://jdanray.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/about/</guid>
+      <guid>https://jdanray.github.io/about/</guid>
       <description>
       
       My name is Daniel Ray. I’m a software engineer. You can find me at:

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Write loops like Dijkstra" />
+<meta property="og:description" content="In this blog post, I want to teach you a better way to develop loops.
+You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases and realize your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/loop/" />
+<meta property="article:published_time" content="2020-05-20T23:40:27-05:00" />
+<meta property="article:modified_time" content="2020-05-20T23:40:27-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Write loops like Dijkstra"/>
+<meta name="twitter:description" content="In this blog post, I want to teach you a better way to develop loops.
+You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases and realize your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Write loops like Dijkstra | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">Computer science and programming</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">20</span>
+<span class="rest">May 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Write loops like Dijkstra</h1>
+</div>
+</div>
+<div class="markdown">
+<p>In this blog post, I want to teach you a better way to develop loops.</p>
+<p>You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases and realize your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs. Finally, however, the program passes all of your test cases &ndash; but you can&rsquo;t help but doubt whether it will always run correctly. Could you have covered every possible case?</p>
+<p>The famous computer scientist Edsger Dijkstra pioneered an approach to programming that can decrease the presence of bugs and increase your confidence in your programs. David Gries systematized Dijkstra&rsquo;s approach, and I will provide you with an informal explanation of his system.</p>
+<p>I will restrict the focus to loops. The entire system is too big to cover in one blog post. I choose loops because they are very important.</p>
+<p>This approach isn&rsquo;t the end-all, be-all. Programming is difficult. It requires many different techniques. However, the following method can help you in many situations. The time spent running test cases, looking through output, and searching for errors could be spent in other ways.</p>
+<p>Let&rsquo;s begin by examining a simple while-loop:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int N = nums.length;
+	int i = 0;
+	int s = 0;
+	while (i != N)
+	{
+		s += nums[i];
+		i++;
+	}
+</code></pre></div><p>The purpose of this loop is to sum the elements of a given integer array, nums. The loop has six parts:</p>
+<p><strong>(1) Precondition</strong></p>
+<p>A precondition describes the initial state of the program. In this case, the precondition is that nums is an array of N integers (where N &gt;= 0).</p>
+<p><strong>(2) Postcondition</strong></p>
+<p>A postcondition describes a state we want the program to be in. In this case, the postcondition is that s == the sum of the elements in N[0..N - 1].</p>
+<p><strong>(3) Loop invariant</strong></p>
+<p>We want a guarantee that the loop does what we want it to do. A loop invariant can help ensure that if the loop begins in a state that satisfies the precondition, it will terminate in a state that satisfies the postcondition.</p>
+<p>A loop invariant is a claim that is true at the beginning and end of each iteration of the loop. In this case, the loop invariant is</p>
+<p>     s == the sum of the elements in N[0..i - 1].</p>
+<p>You don&rsquo;t need to worry about how we found this. I will explain how to arrive at loop invariants in more detail soon.</p>
+<p><strong>(4) Initialization</strong></p>
+<p>Initialization establishes the loop invariant. In this case, the initialization is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int i = 0;
+	int s = 0; 
+</code></pre></div><p>After this initialization, the loop invariant is true. When i == 0, we have N[0..-1], which is an empty array. We define the sum of an empty array to equal 0, so the loop invariant holds.</p>
+<p><strong>(5) Termination condition</strong></p>
+<p>The termination condition is simply the condition in which the loop terminates. In this case, the termination condition is i == N. While i != N, the loop executes. When i == N, the loop terminates.</p>
+<p>The loop invariant and the termination condition are all that is necessary to ensure that, if the loop terminates, it terminates in a state that satisfies the postcondition. For instance, when both our loop invariant and termination condition are true, we have</p>
+<p>     (s == the sum of the elements in N[0..i - 1]) and (i == N).</p>
+<p>So, we have</p>
+<p>     s == the sum of the elements in N[0..N - 1].</p>
+<p>And that is our postcondition. Together, the loop invariant and the termination condition imply the postcondition.</p>
+<p><em>The key to writing loops is to develop loop invariants and termination conditions that ensure the postcondition. Before we write any code, we want to have those two things in hand.</em></p>
+<p><strong>(6) Loop body</strong></p>
+<p>The loop body is the sequence of statements executed during an iteration of the loop. In this case, the loop body is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	s += nums[i];
+	i++;
+</code></pre></div><p>Because the loop invariant and the termination condition ensure the postcondition, the loop body just has two purposes:</p>
+<p>(a) Make progress toward termination<br>
+(b) Maintain the loop invariant</p>
+<p>The statement <code>i++;</code> makes progress toward termination. Initially, i == 0, and the loop terminates when i == N. So, the statement <code>i++;</code> ensures that the loop gets closer to termination with each iteration.</p>
+<p>The statement <code>s += nums[i];</code> maintains the loop invariant. Incrementing i effectively replaces i with i + 1. So, to maintain the loop invariant, we must add the current nums[i] to s. Now the loop invariant will remain true after the iteration.</p>
+<p>When you write a loop, it is very beneficial for you to attend to these six points. I&rsquo;m going to give you a step-by-step procedure to help you do just that.</p>
+<p><strong>The method</strong></p>
+<p>To illustrate the procedure, let&rsquo;s work an example. We&rsquo;ll go from problem statement to source code.</p>
+<p><em>Problem statement</em>:</p>
+<p>Given an unsorted array of integers, find the length of the longest increasing subarray.</p>
+<p>Example:<br>
+Input: [1,3,5,4,7]<br>
+Output: 3<br>
+Explanation: The longest increasing subarray is [1,3,5], and its length is 3.</p>
+<p><strong>(1) Define the precondition</strong></p>
+<p>nums is an array of N integers, where N &gt;= 0.</p>
+<p><strong>(2) Define the postcondition</strong></p>
+<p>m == the length of the longest increasing subarray in nums[0..N - 1].</p>
+<p><strong>(3) Derive the loop invariant</strong></p>
+<p>In general, the postcondition is a conjunction of the loop invariant and the termination condition. For instance, in our above example we found that</p>
+<p>     (s == the sum of the elements in nums[0..i - 1]) and (i == N)</p>
+<p>was the same as the postcondition. This suggests that we can start with a postcondition and derive the loop invariant and termination condition from it.</p>
+<p>Let&rsquo;s try to use our current postcondition to derive a good loop invariant. To do that, we employ a common strategy. We replace a constant in the postcondition with a variable:</p>
+<p>     m == the length of the longest increasing subarray in nums[0..i - 1].</p>
+<p>This looks good, but it&rsquo;s not strong enough. If the increasing subarray that ends at nums[i - 1] is longer than any increasing subarray that ends before nums[i - 1], then it&rsquo;s the longest increasing subarray in nums[0..i - 1]. So, to find the length of the longest increasing subarray in nums[0..i - 1], it is useful to know the length of the increasing subarray that ends at nums[i - 1], as well.</p>
+<p>Although we could use a nested loop to find the length of the increasing subarray that ends at nums[i - 1] for each 0 &lt;= i &lt; N, it is more efficient to strengthen our loop invariant to keep track of that information:</p>
+<p>     (m == the length of the longest increasing subarray in nums[0..i - 1]) &amp;&amp; <br>
+     (l == the length of the increasing subarray that ends at nums[i - 1])</p>
+<p>For more strategies for developing loop invariants, see <em>The Science of Programming</em>, by David Gries. Gries discusses several rules for mechanically deriving loop invariants.</p>
+<p><strong>(4) Initialize the loop invariant</strong></p>
+<p>We want to traverse the whole array. So, we begin at i == 0. Now we must assign values to m and l so that the loop invariant is initially true. The following statements will serve as a good initialization:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int i = 0;
+	int m = 0;
+	int l = 0;
+</code></pre></div><p>When i == 0, we have nums[0..-1] and nums[-1]. We define the length of the longest increasing subarray in an empty array (like nums[0..-1]) to be equal to 0. We define the length of the increasing subarray that ends at a location outside of nums (like nums[-1]) to be equal to 0. So, after these statements are executed, the loop invariant is true.</p>
+<p><strong>(5) Derive the termination condition</strong></p>
+<p>We can formulate the postcondition this way:</p>
+<p>     (m == the length of the longest increasing subarray in nums[0..i - 1]) and (i == N)</p>
+<p>So, the termination condition is obvious. The loop should terminate when i == N.</p>
+<p><strong>(6) Determine the loop body</strong></p>
+<p>Our priority is to make progress toward termination. If progress falsifies the loop invariant, then we restore it. In this way we both make progress toward termination and maintain the loop invariant.</p>
+<p>The following statement obviously makes progess toward termination:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	i++;
+</code></pre></div><p>Unfortunately, that statement may falsify our loop invariant. Unless we update l and m at each iteration, we have no guarantee that the loop invariant will remain true after we increment i.</p>
+<p><em>Update l:</em> Before the i-th iteration begins, we have that l == the length of the increasing subarray that ends at nums[i - 1]. If nums[i] &gt; nums[i - 1], then the length of the increasing subarray that ends at nums[i] is equal to l + 1. Otherwise, the length is just 1.</p>
+<p><em>Update m:</em> If the increasing subarray that ends at nums[i] is longer than any increasing subarray that ends before nums[i], then it&rsquo;s the longest increasing subarray in nums[0..i]. We have that m == the length of the longest increasing subarray in nums[0..i - 1]. So, to keep m up to date for the i-th iteration, we compare m and l, and take the larger of the two.</p>
+<p>Now let&rsquo;s put all of the pieces together. We get the following program:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public int findLengthOfLCIS(int[] nums) {
+	int N = nums.length;
+
+	int i = 0;
+	int m = 0;
+	int l = 0;
+
+	while (i != N) {
+		if (i &gt; 0 &amp;&amp; nums[i] &gt; nums[i - 1])
+			l++;
+		else
+			l = 1;
+
+		m = Math.max(m, l);
+		i++;
+	}
+
+	return m;
+}
+</code></pre></div><p><strong>Summary:</strong></p>
+<p>The pre- and postconditions define the problem. The program will begin in a state characterized by the precondition, and it must terminate in a state that satisfies the postcondition. The loop invariant and the termination condition should imply the postcondition, and we can derive them from the postcondition. The loop invariant must be true before and after each iteration of the loop. The initialization makes the loop invariant true before any iteration, and the loop body maintains the loop invariant and makes progress toward termination. Derive the loop invariant and the termination condition before you begin writing code.</p>
+<p><em>Our method for writing a loop:</em></p>
+<p>(1) Define the precondition <br>
+(2) Define the postcondition<br>
+(3) Derive the loop invariant<br>
+(4) Determine the initialization<br>
+(5) Derive the termination condition <br>
+(6) Develop the loop body</p>
+<p><strong>Further resources:</strong></p>
+<p><em>Books:</em></p>
+<p>The Science of Programming, by David Gries<br>
+A Discipline of Programming, by Edsger Dijkstra<br>
+Introduction to Algorithms, by Cormen, Leisersen, Rivest, and Stein<br>
+How to Think About Algorithms, by Jeff Edmonds<br>
+Programming Pearls, by Jon Bentley</p>
+<p><em>Webpages:</em></p>
+<p><a href="http://www.cs.rug.nl/~wim/pub/whh348.pdf">http://www.cs.rug.nl/~wim/pub/whh348.pdf</a>
+<a href="https://www.tandfonline.com/doi/abs/10.1080/00207390110038303?journalCode=tmes20">https://www.tandfonline.com/doi/abs/10.1080/00207390110038303?journalCode=tmes20</a><br>
+<a href="https://courses.cs.washington.edu/courses/cse331/13sp/conceptual-info/hoare-logic.pdf">https://courses.cs.washington.edu/courses/cse331/13sp/conceptual-info/hoare-logic.pdf</a>
+<a href="https://www.eecs.yorku.ca/~jeff/courses/3101/ass/steps1.pdf">https://www.eecs.yorku.ca/~jeff/courses/3101/ass/steps1.pdf</a>
+<a href="https://ro.uow.edu.au/cgi/viewcontent.cgi?article=1059&amp;context=compsciwp">https://ro.uow.edu.au/cgi/viewcontent.cgi?article=1059&amp;context=compsciwp</a>
+<a href="http://liamoc.net/posts/2013-11-13-imperativereasoning.html">http://liamoc.net/posts/2013-11-13-imperativereasoning.html</a>
+<a href="https://cseweb.ucsd.edu/classes/sp16/cse21-bd/howto.pdf">https://cseweb.ucsd.edu/classes/sp16/cse21-bd/howto.pdf</a>
+<a href="https://www.cs.scranton.edu//~mccloske/courses/cmps144/invariants_lec.html">https://www.cs.scranton.edu//~mccloske/courses/cmps144/invariants_lec.html</a>
+<a href="http://www.utsc.utoronto.ca/~nick/cscB36/additional-notes/correctness.pdf">http://www.utsc.utoronto.ca/~nick/cscB36/additional-notes/correctness.pdf</a>
+<a href="https://www.win.tue.nl/~kbuchin/teaching/JBP030/notebooks/loop-invariants.html">https://www.win.tue.nl/~kbuchin/teaching/JBP030/notebooks/loop-invariants.html</a></p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

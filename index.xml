@@ -6,10 +6,23 @@
     <description>Recent content on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 17:41:20 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2020 23:40:27 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Write loops like Dijkstra</title>
+      <link>https://jdanray.github.io/post/loop/</link>
+      <pubDate>Wed, 20 May 2020 23:40:27 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/loop/</guid>
+      <description>
+      
+      In this blog post, I want to teach you a better way to develop loops.
+You do the best you can. You try your hardest to g...
+      
+      </description>
+    </item>
     <item>
       <title>My Leetcode Repo</title>
       <link>https://jdanray.github.io/post/leetcode/</link>

@@ -84,23 +84,23 @@ You do the best you can. You try your hardest to get a program right, and it loo
 <p><strong>(1) Precondition</strong></p>
 <p>A precondition describes the initial state of the program. In this case, the precondition is that nums is an array of N integers (where N &gt;= 0).</p>
 <p><strong>(2) Postcondition</strong></p>
-<p>A postcondition describes a state we want the program to be in. In this case, the postcondition is that s == the sum of the elements in N[0..N - 1].</p>
+<p>A postcondition describes a state we want the program to be in. In this case, the postcondition is that s == the sum of the elements in nums[0..N - 1].</p>
 <p><strong>(3) Loop invariant</strong></p>
 <p>We want a guarantee that the loop does what we want it to do. A loop invariant can help ensure that if the loop begins in a state that satisfies the precondition, it will terminate in a state that satisfies the postcondition.</p>
 <p>A loop invariant is a claim that is true at the beginning and end of each iteration of the loop. In this case, the loop invariant is</p>
-<p>     s == the sum of the elements in N[0..i - 1].</p>
+<p>     s == the sum of the elements in nums[0..i - 1].</p>
 <p>You don&rsquo;t need to worry about how we found this. I will explain how to arrive at loop invariants in more detail soon.</p>
 <p><strong>(4) Initialization</strong></p>
 <p>Initialization establishes the loop invariant. In this case, the initialization is:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int i = 0;
 	int s = 0; 
-</code></pre></div><p>After this initialization, the loop invariant is true. When i == 0, we have N[0..-1], which is an empty array. We define the sum of an empty array to equal 0, so the loop invariant holds.</p>
+</code></pre></div><p>After this initialization, the loop invariant is true. When i == 0, we have nums[0..-1], which is an empty array. We define the sum of an empty array to equal 0, so the loop invariant holds.</p>
 <p><strong>(5) Termination condition</strong></p>
 <p>The termination condition is simply the condition in which the loop terminates. In this case, the termination condition is i == N. While i != N, the loop executes. When i == N, the loop terminates.</p>
 <p>The loop invariant and the termination condition are all that is necessary to ensure that, if the loop terminates, it terminates in a state that satisfies the postcondition. For instance, when both our loop invariant and termination condition are true, we have</p>
-<p>     (s == the sum of the elements in N[0..i - 1]) and (i == N).</p>
+<p>     (s == the sum of the elements in nums[0..i - 1]) and (i == N).</p>
 <p>So, we have</p>
-<p>     s == the sum of the elements in N[0..N - 1].</p>
+<p>     s == the sum of the elements in nums[0..N - 1].</p>
 <p>And that is our postcondition. Together, the loop invariant and the termination condition imply the postcondition.</p>
 <p><em>The key to writing loops is to develop loop invariants and termination conditions that ensure the postcondition. Before we write any code, we want to have those two things in hand.</em></p>
 <p><strong>(6) Loop body</strong></p>

@@ -112,8 +112,8 @@ You do the best you can. You try your hardest to get a program right, and it loo
 (b) Maintain the loop invariant</p>
 <p>The statement <code>i++;</code> makes progress toward termination. Initially, i == 0, and the loop terminates when i == N. So, the statement <code>i++;</code> ensures that the loop gets closer to termination with each iteration.</p>
 <p>The statement <code>s += nums[i];</code> maintains the loop invariant. Incrementing i effectively replaces i with i + 1. So, to maintain the loop invariant, we must add the current nums[i] to s. Now the loop invariant will remain true after the iteration.</p>
-<p>When you write a loop, it is very beneficial for you to attend to these six points. I&rsquo;m going to give you a step-by-step procedure to help you do just that.</p>
 <p><strong>The method</strong></p>
+<p>When you write a loop, it is very beneficial for you to attend to these six points. I&rsquo;m going to give you a step-by-step procedure to help you do just that.</p>
 <p>To illustrate the procedure, let&rsquo;s work an example. We&rsquo;ll go from problem statement to source code.</p>
 <p><em>Problem statement</em>:</p>
 <p>Given an unsorted array of integers, find the length of the longest increasing subarray.</p>
@@ -128,10 +128,10 @@ Explanation: The longest increasing subarray is [1,3,5], and its length is 3.</p
 <p><strong>(3) Derive the loop invariant</strong></p>
 <p>In general, the postcondition is a conjunction of the loop invariant and the termination condition. For instance, in our above example we found that</p>
 <p>     (s == the sum of the elements in nums[0..i - 1]) and (i == N)</p>
-<p>was the same as the postcondition. This suggests that we can start with a postcondition and derive the loop invariant and termination condition from it.</p>
+<p>was the same as the postcondition. This suggests that we can derive the loop invariant and termination condition from the postcondition.</p>
 <p>Let&rsquo;s try to use our current postcondition to derive a good loop invariant. To do that, we employ a common strategy. We replace a constant in the postcondition with a variable:</p>
 <p>     m == the length of the longest increasing subarray in nums[0..i - 1].</p>
-<p>This looks good, but it&rsquo;s not strong enough. If the increasing subarray that ends at nums[i - 1] is longer than any increasing subarray that ends before nums[i - 1], then it&rsquo;s the longest increasing subarray in nums[0..i - 1]. So, to find the length of the longest increasing subarray in nums[0..i - 1], it is useful to know the length of the increasing subarray that ends at nums[i - 1], as well.</p>
+<p>This looks good, but it&rsquo;s not strong enough. To find the length of the longest increasing subarray in nums[0..i - 1], it is useful to know the length of the increasing subarray that ends at nums[i - 1]. If the increasing subarray that ends at nums[i - 1] is longer than any increasing subarray that ends before nums[i - 1], then it&rsquo;s the longest increasing subarray in nums[0..i - 1].</p>
 <p>Although we could use a nested loop to find the length of the increasing subarray that ends at nums[i - 1] for each 0 &lt;= i &lt; N, it is more efficient to strengthen our loop invariant to keep track of that information:</p>
 <p>     (m == the length of the longest increasing subarray in nums[0..i - 1]) &amp;&amp; <br>
      (l == the length of the increasing subarray that ends at nums[i - 1])</p>
@@ -152,9 +152,9 @@ Explanation: The longest increasing subarray is [1,3,5], and its length is 3.</p
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	i++;
 </code></pre></div><p>Unfortunately, that statement may falsify our loop invariant. Unless we update l and m at each iteration, we have no guarantee that the loop invariant will remain true after we increment i.</p>
 <p><em>Update l:</em> Before the i-th iteration begins, we have that l == the length of the increasing subarray that ends at nums[i - 1]. If nums[i] &gt; nums[i - 1], then the length of the increasing subarray that ends at nums[i] is equal to l + 1. Otherwise, the length is just 1.</p>
-<p><em>Update m:</em> If the increasing subarray that ends at nums[i] is longer than any increasing subarray that ends before nums[i], then it&rsquo;s the longest increasing subarray in nums[0..i]. We have that m == the length of the longest increasing subarray in nums[0..i - 1]. So, to keep m up to date for the i-th iteration, we compare m and l, and take the larger of the two.</p>
+<p><em>Update m:</em> If the increasing subarray that ends at nums[i] is longer than any increasing subarray that ends before nums[i], then it&rsquo;s the longest increasing subarray in nums[0..i]. We have that m == the length of the longest increasing subarray in nums[0..i - 1]. So, to keep m up to date for the i-th iteration, we compare m and l and then set m to the larger of the two.</p>
 <p>Now let&rsquo;s put all of the pieces together. We get the following program:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public int findLengthOfLCIS(int[] nums) {
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public int lengthOfLIS(int[] nums) {
 	int N = nums.length;
 
 	int i = 0;
@@ -190,7 +190,8 @@ Introduction to Algorithms, by Cormen, Leisersen, Rivest, and Stein<br>
 How to Think About Algorithms, by Jeff Edmonds<br>
 Programming Pearls, by Jon Bentley</p>
 <p><em>Web resources:</em></p>
-<p><a href="https://www.cs.scranton.edu//~mccloske/courses/cmps144/invariants_lec.html">https://www.cs.scranton.edu//~mccloske/courses/cmps144/invariants_lec.html</a>
+<p><a href="https://core.ac.uk/download/pdf/82596333.pdf">https://core.ac.uk/download/pdf/82596333.pdf</a>
+<a href="https://www.cs.scranton.edu//~mccloske/courses/cmps144/invariants_lec.html">https://www.cs.scranton.edu//~mccloske/courses/cmps144/invariants_lec.html</a>
 <a href="https://www.win.tue.nl/~kbuchin/teaching/JBP030/notebooks/loop-invariants.html">https://www.win.tue.nl/~kbuchin/teaching/JBP030/notebooks/loop-invariants.html</a>
 <a href="http://www.cs.rug.nl/~wim/pub/whh348.pdf">http://www.cs.rug.nl/~wim/pub/whh348.pdf</a>
 <a href="https://courses.cs.washington.edu/courses/cse331/13sp/conceptual-info/hoare-logic.pdf">https://courses.cs.washington.edu/courses/cse331/13sp/conceptual-info/hoare-logic.pdf</a>

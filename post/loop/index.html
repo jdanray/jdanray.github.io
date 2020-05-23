@@ -6,16 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Write loops like Dijkstra" />
-<meta property="og:description" content="In this blog post, I want to teach you a better way to develop loops.
-You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases and realize your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs." />
+<meta property="og:description" content="You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jdanray.github.io/post/loop/" />
 <meta property="article:published_time" content="2020-05-20T23:40:27-05:00" />
 <meta property="article:modified_time" content="2020-05-20T23:40:27-05:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Write loops like Dijkstra"/>
-<meta name="twitter:description" content="In this blog post, I want to teach you a better way to develop loops.
-You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases and realize your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs."/>
+<meta name="twitter:description" content="You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs."/>
 
   <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
@@ -66,10 +64,8 @@ You do the best you can. You try your hardest to get a program right, and it loo
 </div>
 </div>
 <div class="markdown">
-<p>In this blog post, I want to teach you a better way to develop loops.</p>
-<p>You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases and realize your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs. Finally, however, the program passes all of your test cases &ndash; but you can&rsquo;t help but doubt whether it will always run correctly. Could you have covered every possible case?</p>
-<p>The famous computer scientist Edsger Dijkstra pioneered an approach to programming that can decrease the presence of bugs and increase your confidence in your programs. David Gries systematized Dijkstra&rsquo;s approach, and I will provide you with an informal explanation of his system.</p>
-<p>I will restrict the focus to loops. The entire system is too big to cover in one blog post. I choose loops because they are very important.</p>
+<p>You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs. Finally, however, the program passes all of your test cases &ndash; but you can&rsquo;t help but doubt whether it will always run correctly. Could you have covered every possible case?</p>
+<p>The famous computer scientist Edsger Dijkstra pioneered an approach to programming that can decrease the presence of bugs and increase your confidence in your programs. David Gries systematized Dijkstra&rsquo;s approach, and I will provide you with an informal explanation of his system. I will restrict the focus to loops. The entire system is too big to cover in one blog post. I choose loops because they are very important.</p>
 <p>This approach isn&rsquo;t the end-all, be-all. Programming is difficult. It requires many different techniques. However, the following method can help you in many situations. The time spent running test cases, looking through output, and searching for errors could be spent in other ways.</p>
 <p>Let&rsquo;s begin by examining a simple while-loop:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int N = nums.length;
@@ -150,8 +146,8 @@ Explanation: The longest increasing subarray is [1,3,5], and its length is 3.</p
 <p>Our priority is to make progress toward termination. If progress falsifies the loop invariant, then we restore it. In this way we both make progress toward termination and maintain the loop invariant.</p>
 <p>The following statement obviously makes progess toward termination:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	i++;
-</code></pre></div><p>Unfortunately, that statement may falsify our loop invariant. Unless we update l and m at each iteration, we have no guarantee that the loop invariant will remain true after we increment i.</p>
-<p><em>Update l:</em> Before the i-th iteration begins, we have that l == the length of the increasing subarray that ends at nums[i - 1]. If nums[i] &gt; nums[i - 1], then the length of the increasing subarray that ends at nums[i] is equal to l + 1. Otherwise, the length is just 1.</p>
+</code></pre></div><p>However, that statement may falsify our loop invariant. Unless we update l and m at each iteration, we have no guarantee that the loop invariant will remain true after we increment i.</p>
+<p><em>Update l:</em> We want the loop invariant to remain true for l when the i-th iteration ends. When the i-th iteration begins, we have that l == the length of the increasing subarray that ends at nums[i - 1]. If nums[i] &gt; nums[i - 1], then the length of the increasing subarray that ends at nums[i] is equal to l + 1. Otherwise, the length is just 1. We maintain the first part of the loop invariant.</p>
 <p><em>Update m:</em> If the increasing subarray that ends at nums[i] is longer than any increasing subarray that ends before nums[i], then it&rsquo;s the longest increasing subarray in nums[0..i]. We have that m == the length of the longest increasing subarray in nums[0..i - 1]. So, to keep m up to date for the i-th iteration, we compare m and l and then set m to the larger of the two.</p>
 <p>Now let&rsquo;s put all of the pieces together. We get the following program:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public int lengthOfLIS(int[] nums) {

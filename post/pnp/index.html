@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="An Informal Explanation of the P=NP? Problem" />
+<meta property="og:description" content="You have an easy job. Every hour your manager comes into your office and gives you a positive integer. Your job is simply to determine whether that integer is divisible by 4.
+You&rsquo;d like to have a single method that decides whether any positive integer is divisible by 4. Because you&rsquo;re brimming with ingenuity, you build a machine that will solve every instance of the problem for you.
+The machine consists of a finite state control, a read-write head, and an infinitely long tape composed of infinitely many tape squares." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/pnp/" />
+<meta property="article:published_time" content="2020-06-19T18:00:18-05:00" />
+<meta property="article:modified_time" content="2020-06-19T18:00:18-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="An Informal Explanation of the P=NP? Problem"/>
+<meta name="twitter:description" content="You have an easy job. Every hour your manager comes into your office and gives you a positive integer. Your job is simply to determine whether that integer is divisible by 4.
+You&rsquo;d like to have a single method that decides whether any positive integer is divisible by 4. Because you&rsquo;re brimming with ingenuity, you build a machine that will solve every instance of the problem for you.
+The machine consists of a finite state control, a read-write head, and an infinitely long tape composed of infinitely many tape squares."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>An Informal Explanation of the P=NP? Problem | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">Hello! I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">19</span>
+<span class="rest">Jun 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">An Informal Explanation of the P=NP? Problem</h1>
+</div>
+</div>
+<div class="markdown">
+<p>You have an easy job. Every hour your manager comes into your office and gives you a positive integer. Your job is simply to determine whether that integer is divisible by 4.</p>
+<p>You&rsquo;d like to have a single method that decides whether any positive integer is divisible by 4. Because you&rsquo;re brimming with ingenuity, you build a machine that will solve every instance of the problem for you.</p>
+<p>The machine consists of a finite state control, a read-write head, and an infinitely long tape composed of infinitely many tape squares. Each square contains a symbol, which may be a blank.</p>
+<p>At each step in the machine&rsquo;s operation, the read-write head reads the square underneath it. According to the symbol that the head reads and the state that the finite state control is in, the machine performs a set of actions:</p>
+<p>a) The head may erase the symbol that is on the square and write a new one<br>
+b) The head may move one square to the left or right<br>
+c) The finite state control may change its state</p>
+<p>If the machine enters a yes-state or a no-state, then it halts.</p>
+<p>This machine is very generic, and it can perform many different operations. To make your machine decide whether a given positive integer is divisible by 4, you specify a particular table of behavior that defines its manner of operation.</p>
+<p>You happen to know that a positive integer is divisible by 4 if the last two digits of its binary representation are 0. So, for example, your manager comes in and tells you to determine whether 20 is divisible by 4. You know that the binary representation of 20 is 10100. So, you write &ldquo;1&rdquo; on square 1, &ldquo;0&rdquo; on square 2, &ldquo;1&rdquo; on square 3, &ldquo;0&rdquo; on square 4, and &ldquo;0&rdquo; on square 5. You leave the rest of the squares blank.</p>
+<p>So, the machine is going to examine the last two digits in the binary representation. But how does it know when the symbol it&rsquo;s reading is a final digit in the binary representation? Because the rest of the squares are blank, the string of input symbols is followed by blank symbols. So, all the machine has to do is move right until it reaches a blank symbol. Then it moves left one square, and it&rsquo;s at the final digit in the binary representation.</p>
+<p>If the final symbol is a &ldquo;1&rdquo;, then the machine enters a no-state and halts. If the final symbol is a &ldquo;0&rdquo;, then the machine moves one square to the left. If the next symbol is a &ldquo;1&rdquo;, then the machine enters a no-state and halts. If the symbol is a &ldquo;0&rdquo;, then the machine enters a yes-state and halts.</p>
+<p>If the machine enters a yes-state, then the positive integer is divisible by 4. If the machine enters a no-state, then the positive integer is not divisible by 4. In this way, the machine decides whether the positive integer is divisible by 4.</p>
+<p>In the case of our example, the answer to the question &ldquo;Is the positive integer divisible by 4?&rdquo; is &ldquo;Yes&rdquo;. For this instance of the problem, the machine will enter a yes-state, because 20 is divisible by 4.</p>
+<p>Because &ldquo;10100&rdquo; has five digits, the machine performs five steps before it gets to a blank symbol. Then it performs another step when it reads the blank symbol, changes state, and moves one square to the left. If the symbol written on that square is a &ldquo;1&rdquo;, it halts, but if the symbol is a &ldquo;0&rdquo;, then it must move one square to the left. Then it reads that symbol and enters a yes-state or a no-state. So, in general, the machine performs at most n + 3 steps, where n is the number of bits composing the positive integer&rsquo;s binary representation. n + 3 is a <a href="https://www.wolframalpha.com/examples/mathematics/algebra/polynomials/">polynomial expression</a>.</p>
+<p>We define the time it takes for the machine to carry out its computation to be the number of steps that occur during the computation. So, because the number of steps grows according to a polynomial expression, we say that the machine solves the problem in polynomial time.</p>
+<p>A problem that can be solved in polynomial time on a machine like the one that you built belongs to a class of problems called P. Such problems have fast solutions. Problems that belong to P are tractable.</p>
+<p>Now, your manager is very impressed with you and your ability to build impossible machines that can&rsquo;t actually exist, so he gives you a new problem. Now every hour he comes in and gives you a list of cities, the distances between them, and a number. Your job is to decide whether you can visit every city exactly once, without traveling a distance greater than the given number.</p>
+<p>You quickly find that it takes a lot more time to solve instances of this new problem than it does to solve instances of the first problem. However, if someone were to guess a solution, it would only take you polynomial time to verify whether their guess was correct. All you would have to do is (1) check whether their route visited every city in the list, (2) compute the length of the tour, and (3) compare the length of the tour to the given number.</p>
+<p>So, you build a new machine. This machine is like the old machine, except it is fitted with a guessing module that has its own write-only head. In the first stage of the operation of the machine, the write-only head writes symbols on tape squares. In the second stage of the operation of the machine, the read-write head checks the symbols that the write-only head wrote. The machine solves the problem if:</p>
+<p>(1) For every instance of the problem whose answer is &ldquo;yes&rdquo;, there is some guess that leads the checking stage to enter a yes-state, and</p>
+<p>(2) For every instance of the problem whose answer is not &ldquo;yes&rdquo;, there is no guess that leads the checking stage to enter a yes-state.</p>
+<p>A problem that this new machine can solve in polynomial time belongs to a class of problems called NP.</p>
+<p>Your new machine can solve in polynomial time all the problems that your first machine can solve in polynomial time. Just ignore any guess made during the guessing stage, and during the checking stage perform the operation of the first machine. So, every problem that belongs to P also belongs to NP.</p>
+<p>But can your first machine solve in polynomial time every problem that your new machine can solve in polynomial time? If it can, then P=NP.</p>
+<p>It would be great if P=NP, because then seemingly hard problems, like the second problem that your manager gave you, would have fast solutions, like the first problem that your manager gave you. However, it is widely believed that P!=NP.</p>
+<p>Sources:</p>
+<p>Garey, Michael R., and David S. Johnson. <em>Computers and Intractability: A Guide to the Theory of NP-Completeness</em>. San Francisco: W. H. Freeman, 1979.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

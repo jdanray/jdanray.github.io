@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="The K-Nearest Neighbors Algorithm" />
+<meta property="og:description" content="The k-nearest neighbors algorithm is a simple machine-learning algorithm that classifies a new data point according to the classes of the data points closest to it. An example should illustrate the nature and effectiveness of the algorithm.
+Consider a given apartment renter. If three out of the five renters living nearest to our renter make &gt;$75k/yr, then our renter probably makes &gt;$75k/yr, too. Of course, it&rsquo;s possible that he or she doesn&rsquo;t, but it&rsquo;s likely that he or she does." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/knn/" />
+<meta property="article:published_time" content="2020-06-19T17:50:24-05:00" />
+<meta property="article:modified_time" content="2020-06-19T17:50:24-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The K-Nearest Neighbors Algorithm"/>
+<meta name="twitter:description" content="The k-nearest neighbors algorithm is a simple machine-learning algorithm that classifies a new data point according to the classes of the data points closest to it. An example should illustrate the nature and effectiveness of the algorithm.
+Consider a given apartment renter. If three out of the five renters living nearest to our renter make &gt;$75k/yr, then our renter probably makes &gt;$75k/yr, too. Of course, it&rsquo;s possible that he or she doesn&rsquo;t, but it&rsquo;s likely that he or she does."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>The K-Nearest Neighbors Algorithm | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">Hello! I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">19</span>
+<span class="rest">Jun 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">The K-Nearest Neighbors Algorithm</h1>
+</div>
+</div>
+<div class="markdown">
+<p>The k-nearest neighbors algorithm is a simple machine-learning algorithm that classifies a new data point according to the classes of the data points closest to it. An example should illustrate the nature and effectiveness of the algorithm.</p>
+<p>Consider a given apartment renter. If three out of the five renters living nearest to our renter make &gt;$75k/yr, then our renter probably makes &gt;$75k/yr, too. Of course, it&rsquo;s possible that he or she doesn&rsquo;t, but it&rsquo;s likely that he or she does. The k-nearest neighbors algorithm operates on this principle. Given an integer k, the algorithm classifies a new data point as the class that appears most frequently among the k data points nearest to the new data point.</p>
+<p><a href="https://github.com/jdanray/blog-code/blob/master/ai/kNN.js">Here is my JavaScript implementation of the kNN algorithm.</a></p>
+<p>As <a href="http://mathbabe.org/2013/04/04/k-nearest-neighbors-dangerously-simple/">this great blog post</a> explains, it&rsquo;s crucial to pick an appropriate metric for measuring the nearness of neighbors. In my implementation, I used a common metric, the Euclidean distance.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

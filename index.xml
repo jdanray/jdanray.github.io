@@ -6,10 +6,22 @@
     <description>Recent content on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 May 2020 23:40:27 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 17:50:24 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>The K-Nearest Neighbors Algorithm</title>
+      <link>https://jdanray.github.io/post/knn/</link>
+      <pubDate>Fri, 19 Jun 2020 17:50:24 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/knn/</guid>
+      <description>
+      
+      The k-nearest neighbors algorithm is a simple machine-learning algorithm that classifies a new data point according to t...
+      
+      </description>
+    </item>
     <item>
       <title>Write loops like Dijkstra</title>
       <link>https://jdanray.github.io/post/loop/</link>

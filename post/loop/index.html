@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Write Loops Like Dijkstra" />
-<meta property="og:description" content="You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs." />
+<meta property="og:description" content="You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that the program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jdanray.github.io/post/loop/" />
 <meta property="article:published_time" content="2020-05-20T23:40:27-05:00" />
 <meta property="article:modified_time" content="2020-05-20T23:40:27-05:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Write Loops Like Dijkstra"/>
-<meta name="twitter:description" content="You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs."/>
+<meta name="twitter:description" content="You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that the program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs."/>
 
   <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
@@ -70,7 +70,7 @@
 </div>
 </div>
 <div class="markdown">
-<p>You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that your program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs. Finally, however, the program passes all of your test cases &ndash; but you can&rsquo;t help but doubt whether it will always run correctly. Could you have covered every possible case?</p>
+<p>You do the best you can. You try your hardest to get a program right, and it looks like you&rsquo;ve done it. But then you run your program on some test cases, and you realize that the program is buggy. So, you modify it, hoping that soon it will be error-free. But then your modified program still fails on some test cases, and you may even find that your efforts have introduced some new bugs. Finally, however, the program passes all of your test cases &ndash; but you can&rsquo;t help but doubt whether it will always run correctly. Could you have covered every possible case?</p>
 <p>The famous computer scientist Edsger Dijkstra pioneered an approach to programming that can decrease the presence of bugs and increase your confidence in your programs. David Gries systematized Dijkstra&rsquo;s approach, and I will provide you with an informal explanation of his system. I will restrict the focus to loops. The entire system is too big to cover in one blog post. I choose loops because they are very important.</p>
 <p>This approach isn&rsquo;t the end-all, be-all. Programming is difficult. It requires many different techniques. However, the following method can help you in many situations. The time spent running test cases, looking through output, and searching for errors could be spent in other ways.</p>
 <p>Let&rsquo;s begin by examining a simple while-loop:</p>

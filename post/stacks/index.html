@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Stacks" />
+<meta property="og:description" content="A stack is a container, like an array. However, each element of an array can be accessed directly and in constant time. In contrast, the elements of a stack obey the last-in, first-out (or first-in, last-out) principle.
+Let&rsquo;s go over an example. Say that you have an array A = {5, 3, 2, 4}. You can access any element in A directly. For instance, A[0] = 5, A[2] = 2, and so on." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/stacks/" />
+<meta property="article:published_time" content="2020-07-06T00:12:47-05:00" />
+<meta property="article:modified_time" content="2020-07-06T00:12:47-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Stacks"/>
+<meta name="twitter:description" content="A stack is a container, like an array. However, each element of an array can be accessed directly and in constant time. In contrast, the elements of a stack obey the last-in, first-out (or first-in, last-out) principle.
+Let&rsquo;s go over an example. Say that you have an array A = {5, 3, 2, 4}. You can access any element in A directly. For instance, A[0] = 5, A[2] = 2, and so on."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Stacks | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">06</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Stacks</h1>
+</div>
+</div>
+<div class="markdown">
+<p>A stack is a container, like an array. However, each element of an array can be accessed directly and in constant time. In contrast, the elements of a stack obey the last-in, first-out (or first-in, last-out) principle.</p>
+<p>Let&rsquo;s go over an example. Say that you have an array A = {5, 3, 2, 4}. You can access any element in A directly. For instance, A[0] = 5, A[2] = 2, and so on. And when you access an element in this way, you access it in constant time. That means that, no matter how big the array is, you always access the element that you want in the same amount of time. But we can contrast all this with a stack.</p>
+<p>The classic metaphor for a stack is simply a stack of cafeteria trays. When you take a tray off a stack of cafeteria trays, you take the tray that&rsquo;s at the top of the stack. The tray at the top of the stack is the tray that was placed onto the stack last. So, the first tray that you take off the stack is the tray that was placed on the stack last. So, the stack follows the last-in, first-out principle.</p>
+<p>You can also characterize the last-in, first-out principle as the first-in, last-out principle. The last tray that you take off the stack is the tray that&rsquo;s at the bottom of the stack, and the tray that&rsquo;s at the bottom of the stack is the tray that was put down first. So, the last tray that you take off the stack is the tray that was put down first. So, the stack follows the first-in, last-out principle.</p>
+<p>The concept of a stack in computer science is an abstraction of something that people observe in lunchrooms every day. The stack is a fundamental data structure in computer science.</p>
+<p>Typically stacks are implemented using functions called &ldquo;pop&rdquo; and &ldquo;push&rdquo;. When you push an element onto a stack, you put the element on the top of the stack. When you pop a stack, you take the top element off. Consequently, you cannot access the element that you&rsquo;re looking for directly, like you can with an array. You have to pop the stack until you find the element that you want.</p>
+<p>In a standard implementation, each pop takes the same amount of time. However, you can access the element that you want in one pop only if it is at the top of the stack, and the element that you want is not guaranteed to be at the top of the stack. In the worst case, your element is at the very bottom of the stack. So, if there are N elements in the stack, then you have to pop the stack N times in the worst case. So, while a standard implementation of pop is O(1), it can be O(N) time before you access the element that you want to access.</p>
+<p>Nevertheless, stacks often come in handy. For example, you can implement a <a href="https://en.wikipedia.org/wiki/Pushdown_automaton">pushdown automaton</a> with a stack.</p>
+<p><a href="https://github.com/jdanray/blog-code/blob/master/datastructures/stack.h">Here is my C++ implementation of the stack</a>. It is on <a href="https://github.com/jdanray/blog-code">my GitHub</a>.</p>
+<p>Both <a href="https://en.wikipedia.org/wiki/Standard_Template_Library">STL</a> and <a href="http://www.boost.org/">Boost</a> include stacks. I implemented my own class of stacks solely for educational purposes.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

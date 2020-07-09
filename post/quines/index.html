@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Quines" />
+<meta property="og:description" content="A quine is a computer program that prints its own source code. Writing a quine is not as easy as you might think.
+To learn how to write quines, I made use of David Madore&rsquo;s discussion of quines and Introduction to the Theory of Computation, by Michael Sipser. However, I prefer Sipser&rsquo;s discussion. I found it to be a lot clearer than Madore&rsquo;s.
+Sipser does not talk about computer programs. Instead, he talks about Turing machines." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/quines/" />
+<meta property="article:published_time" content="2020-07-08T21:54:15-05:00" />
+<meta property="article:modified_time" content="2020-07-08T21:54:15-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quines"/>
+<meta name="twitter:description" content="A quine is a computer program that prints its own source code. Writing a quine is not as easy as you might think.
+To learn how to write quines, I made use of David Madore&rsquo;s discussion of quines and Introduction to the Theory of Computation, by Michael Sipser. However, I prefer Sipser&rsquo;s discussion. I found it to be a lot clearer than Madore&rsquo;s.
+Sipser does not talk about computer programs. Instead, he talks about Turing machines."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Quines | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">08</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Quines</h1>
+</div>
+</div>
+<div class="markdown">
+<p>A quine is a computer program that prints its own source code. Writing a quine is not as easy as you might think.</p>
+<p>To learn how to write quines, I made use of <a href="http://www.madore.org/~david/computers/quine.html">David Madore&rsquo;s discussion of quines</a> and <em>Introduction to the Theory of Computation</em>, by Michael Sipser. However, I prefer Sipser&rsquo;s discussion. I found it to be a lot clearer than Madore&rsquo;s.</p>
+<p>Sipser does not talk about computer programs. Instead, he talks about <a href="../turing/">Turing machines</a>. A computer program corresponds to a Turing machine. So, a quine corresponds to a Turing machine that outputs a description of itself.</p>
+<p>Let QUINE be a Turing machine that outputs a description of itself. QUINE has two parts, C and D, each of which is itself a Turing machine. C outputs a description of D, and D outputs a description of C. So, QUINE outputs a description of its entire self.</p>
+<p>D runs first. D outputs onto its tape a description of C. Refer to that description of C as [C].</p>
+<p>Let q(w) be the description of a Turing machine that outputs w. q(w) is a computable function. In fact, given any string w, it is easy to construct a Turing machine P_{w} that outputs w. On any input, P_{w} simply outputs w onto its tape, ignoring the input.</p>
+<p>Now, C reads [C] off D&rsquo;s tape. Then C computes q([C]). So, now C has the description of a Turing machine that outputs [C]. But that&rsquo;s D! So, now C can output a description of D.</p>
+<p>So, a quine has two parts: the code and the data. The data represents the code. The code uses the data to print the code and the data.</p>
+<p>I wrote <a href="https://github.com/jdanray/blog-code/blob/master/quine/quine.c">a quine in C</a> and <a href="https://github.com/jdanray/blog-code/blob/master/quine/quine.py">a quine in Python</a>. To verify that the C program is a quine, type the following commands at the terminal:</p>
+<pre><code>gcc -o quine quine.c    
+diff &lt;(./quine) quine.c    
+</code></pre>
+<p>To verify that the Python program is a quine, type the following command:</p>
+<pre><code>diff &lt;(python quine.py) quine.py
+</code></pre>
+<p>You will find in both cases that diff produces no output, which means that there are no differences between the programs&rsquo; outputs and their source code.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

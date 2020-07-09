@@ -6,10 +6,23 @@
     <description>Recent content in Posts on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jul 2020 00:37:14 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2020 21:54:15 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Quines</title>
+      <link>https://jdanray.github.io/post/quines/</link>
+      <pubDate>Wed, 08 Jul 2020 21:54:15 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/quines/</guid>
+      <description>
+      
+      A quine is a computer program that prints its own source code. Writing a quine is not as easy as you might think.
+To lea...
+      
+      </description>
+    </item>
     <item>
       <title>Of Dijkstra and Priority Queues</title>
       <link>https://jdanray.github.io/post/dijkstra/</link>

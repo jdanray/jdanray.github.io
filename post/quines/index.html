@@ -76,13 +76,14 @@ Sipser does not talk about computer programs. Instead, he talks about Turing mac
 <div class="markdown">
 <p>A quine is a computer program that prints its own source code. Writing a quine is not as easy as you might think.</p>
 <p>To learn how to write quines, I made use of <a href="http://www.madore.org/~david/computers/quine.html">David Madore&rsquo;s discussion of quines</a> and <em>Introduction to the Theory of Computation</em>, by Michael Sipser. However, I prefer Sipser&rsquo;s discussion. I found it to be a lot clearer than Madore&rsquo;s.</p>
-<p>Sipser does not talk about computer programs. Instead, he talks about <a href="../turing/">Turing machines</a>. A computer program corresponds to a Turing machine. So, a quine corresponds to a Turing machine that outputs a description of itself.</p>
-<p>Let QUINE be a Turing machine that outputs a description of itself. QUINE has two parts, C and D, each of which is itself a Turing machine. C outputs a description of D, and D outputs a description of C. So, QUINE outputs a description of its entire self.</p>
-<p>D runs first. D outputs onto its tape a description of C. Refer to that description of C as [C].</p>
-<p>Let q(w) be the description of a Turing machine that outputs w. q(w) is a computable function. In fact, given any string w, it is easy to construct a Turing machine P_{w} that outputs w. On any input, P_{w} simply outputs w onto its tape, ignoring the input.</p>
-<p>Now, C reads [C] off D&rsquo;s tape. Then C computes q([C]). So, now C has the description of a Turing machine that outputs [C]. But that&rsquo;s D! So, now C can output a description of D.</p>
+<p>Sipser does not talk about computer programs. Instead, he talks about <a href="../turing/">Turing machines</a>. A computer program corresponds to a Turing machine. So, a quine corresponds to a Turing machine that outputs a description of itself. I describe Turing machines in more depth in <a href="https://jdanray.github.io/post/pnp/">my informal explanation of the P=NP? problem</a>.</p>
+<p>Let&rsquo;s say that we have a Turing machine that outputs a description of itself. QUINE, our Turing machine, has two parts, C and D. Both C and D are themselves Turing machines. C outputs a description of D, and D outputs a description of C. So, QUINE outputs a description of its entire self.</p>
+<p>D runs first. D outputs a description of C onto its tape. Let&rsquo;s refer to that description of C as [C].</p>
+<p>C reads [C] off D&rsquo;s tape and computes the function q([C]). q(w) is the description of a Turing machine that outputs w. So, after C computes q([C]), C has the description of a Turing machine that outputs [C]. But that&rsquo;s D! So, now C can output a description of D.</p>
+<p>Where does q(w) come from? In fact, q(w) is easy to compute. Given any w, it is easy to construct a Turing machine P[w] that outputs w. P[w] simply ignores any input and outputs w onto its tape.</p>
 <p>So, a quine has two parts: the code and the data. The data represents the code. The code uses the data to print the code and the data.</p>
-<p>I wrote <a href="https://github.com/jdanray/blog-code/blob/master/quine/quine.c">a quine in C</a> and <a href="https://github.com/jdanray/blog-code/blob/master/quine/quine.py">a quine in Python</a>. To verify that the C program is a quine, type the following commands at the terminal:</p>
+<p>I wrote <a href="https://github.com/jdanray/blog-code/blob/master/quine/quine.c">a quine in C</a> and <a href="https://github.com/jdanray/blog-code/blob/master/quine/quine.py">a quine in Python</a>. You can see that each program is divided into two parts. There is code that processes the contents of a variable, and the variable stores a representation of the code.</p>
+<p>To verify that the C program is a quine, type the following commands at the terminal:</p>
 <pre><code>gcc -o quine quine.c    
 diff &lt;(./quine) quine.c    
 </code></pre>
@@ -90,6 +91,7 @@ diff &lt;(./quine) quine.c
 <pre><code>diff &lt;(python quine.py) quine.py
 </code></pre>
 <p>You will find in both cases that diff produces no output, which means that there are no differences between the programs&rsquo; outputs and their source code.</p>
+<p>To see more programs that I&rsquo;ve written for this blog, <a href="https://www.github.com/jdanray/">visit my GitHub</a>.</p>
 
 </div>
 <div class="tags">

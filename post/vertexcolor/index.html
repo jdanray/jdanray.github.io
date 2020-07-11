@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Vertex Coloring and the Min-Conflicts Algorithm" />
+<meta property="og:description" content="In the vertex coloring problem, you are given a graph and a set of colors. You want to assign colors to the vertices of the graph in such a way that no adjacent vertices have the same color.
+The vertex coloring problem appears in a lot of different forms in the real world. To take a rather frivolous example, just consider Sudoku. Each cell corresponds to a vertex, the numbers 1-9 correspond to colors that you can assign to the vertices, and two vertices are adjacent if the corresponding cells are in the same row, column, or subgrid." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/vertexcolor/" />
+<meta property="article:published_time" content="2020-07-11T00:07:17-05:00" />
+<meta property="article:modified_time" content="2020-07-11T00:07:17-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vertex Coloring and the Min-Conflicts Algorithm"/>
+<meta name="twitter:description" content="In the vertex coloring problem, you are given a graph and a set of colors. You want to assign colors to the vertices of the graph in such a way that no adjacent vertices have the same color.
+The vertex coloring problem appears in a lot of different forms in the real world. To take a rather frivolous example, just consider Sudoku. Each cell corresponds to a vertex, the numbers 1-9 correspond to colors that you can assign to the vertices, and two vertices are adjacent if the corresponding cells are in the same row, column, or subgrid."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Vertex Coloring and the Min-Conflicts Algorithm | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">11</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Vertex Coloring and the Min-Conflicts Algorithm</h1>
+</div>
+</div>
+<div class="markdown">
+<p>In <a href="https://en.wikipedia.org/wiki/Graph_coloring#Vertex_coloring">the vertex coloring problem</a>, you are given a graph and a set of colors. You want to assign colors to the vertices of the graph in such a way that no adjacent vertices have the same color.</p>
+
+<p>The vertex coloring problem appears in a lot of different forms in the real world. To take a rather frivolous example, just consider Sudoku. Each cell corresponds to a vertex, the numbers 1-9 correspond to colors that you can assign to the vertices, and two vertices are adjacent if the corresponding cells are in the same row, column, or subgrid.</p>
+
+<p>The vertex coloring problem is a <a href="http://artint.info/html/ArtInt_76.html">constraint satisfaction problem</a>. In a constraint satisfaction problem, you are given a set of variables, a set of possible values for each variable, and a set of constraints. You want to find an assignment of values to the variables that satisfies the constraints. </p>
+
+<p>In the vertex coloring problem, the vertices are the variables, the colors are the possible values for each variable, and the constraint is that no adjacent vertices can have the same color.</p>
+
+<p>There are a number of ways to solve constraint satisfaction problems. One way is recursive backtracking. The <a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle">n queens problem</a> is another constraint satisfaction problem, and <a href="../nqueens/">I have applied recursive backtracking to solve the n queens problem</a>.</p>
+
+<p>Today I want to talk about <a href="https://en.wikipedia.org/wiki/Min-conflicts_algorithm">the min-conflicts algorithm</a>. Like <a href="http://mathworld.wolfram.com/SimulatedAnnealing.html">simulated annealing</a>, which <a href="../simulanneal/">I have also talked about</a>, the min-conflicts algorithm is a type of <a href="http://artint.info/html/ArtInt_83.html">local search</a>. You start with some assignment of values to variables. Unless you get really lucky, that initial assignment will produce conflicts. For example, if a vertex is colored green and two of its neighboring vertices are colored green, then its being colored green produces two conflicts. So, at each iteration, the min-conflicts algorithm picks a conflicting variable at random and assigns to it a value that produces the minimal number of conflicts. If there is more than one such value, then it chooses one at random. It then repeats this process again and again, until it either finds a complete assignment of values that satisfies all of the constraints or goes through the maximum number of iterations that it may go through.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/csp/min_conflicts.py">I implemented the min-conflicts algorithm</a>, and <a href="https://github.com/jdanray/blog-code/blob/master/csp/vertex_coloring.py">I applied it to the vertex covering problem</a>. I also decided to go back and <a href="https://github.com/jdanray/blog-code/blob/master/csp/nqueens_min_conflicts.py">apply the min-conflicts algorithm to the n queens problem</a>. You can find more of my programs at <a href="https://github.com/jdanray/blog-code/">my GitHub</a>.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

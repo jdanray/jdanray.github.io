@@ -6,10 +6,22 @@
     <description>Recent content in Posts on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jul 2020 00:00:08 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 00:07:17 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Vertex Coloring and the Min-Conflicts Algorithm</title>
+      <link>https://jdanray.github.io/post/vertexcolor/</link>
+      <pubDate>Sat, 11 Jul 2020 00:07:17 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/vertexcolor/</guid>
+      <description>
+      
+      In the vertex coloring problem, you are given a graph and a set of colors. You want to assign colors to the vertices of ...
+      
+      </description>
+    </item>
     <item>
       <title>The N Queens Problem</title>
       <link>https://jdanray.github.io/post/nqueens/</link>

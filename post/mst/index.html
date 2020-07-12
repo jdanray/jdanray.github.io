@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Minimum Spanning Trees" />
+<meta property="og:description" content="A minimum spanning tree of a weighted connected graph is a spanning tree whose weight is less than or equal to the weight of every other spanning tree of that graph.
+But what does that mean? Because that statement might not be terribly clear, let&#39;s break it down:
+Informally, a graph is a set of points called vertices that are joined by lines called edges. Formally, a graph is an ordered pair of sets (V, E), where V is a finite set of vertices and E is subset of V x V." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/mst/" />
+<meta property="article:published_time" content="2020-07-12T16:59:05-05:00" />
+<meta property="article:modified_time" content="2020-07-12T16:59:05-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Minimum Spanning Trees"/>
+<meta name="twitter:description" content="A minimum spanning tree of a weighted connected graph is a spanning tree whose weight is less than or equal to the weight of every other spanning tree of that graph.
+But what does that mean? Because that statement might not be terribly clear, let&#39;s break it down:
+Informally, a graph is a set of points called vertices that are joined by lines called edges. Formally, a graph is an ordered pair of sets (V, E), where V is a finite set of vertices and E is subset of V x V."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Minimum Spanning Trees | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">12</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Minimum Spanning Trees</h1>
+</div>
+</div>
+<div class="markdown">
+<p>A minimum spanning tree of a weighted connected graph is a spanning tree whose weight is less than or equal to the weight of every other spanning tree of that graph.</p>
+
+<p>But what does <i>that</i> mean? Because that statement might not be terribly clear, let's break it down:</p>
+
+<p>Informally, a <strong>graph</strong> is a set of points called <strong>vertices</strong> that are joined by lines called <strong>edges</strong>. Formally, a graph is an ordered pair of sets (V, E), where V is a finite set of vertices and E is subset of V x V.</p>
+
+<p>Here's an example of a graph:</p>
+
+<p><img src="/img/graph.png" alt="graph" width="400" height="250"></p>
+
+<p>The lines are the <strong>edges</strong>, and the points are the <strong>vertices</strong>. The graph consists of the vertices and the edges.</p>
+
+<p>You can see in the above image that the edges have numbers next to them. This graph is a <strong>weighted graph</strong>. A weighted graph has a number associated with each edge of the graph. Each number is a <strong>weight</strong> for that edge. The <strong>weight of a graph</strong> is the sum of all those numbers.</p>
+
+<p>A <strong>walk</strong> consists of a finite sequence of vertices. Each pair of neighboring vertices has an edge between them. An example of a walk in the above graph is <strong>0 -> 1 -> 3 -> 1 -> 2</strong>.</p>
+
+<p>A <strong>trail</strong> is a walk that doesn't contain any repeat edges. An example of a trail in the above graph would be <strong>0 -> 3 -> 1 -> 2 -> 3</strong>.</p>
+
+<p>A <strong>path</strong> is a walk that doesn't contain any repeat vertices. An example of a path in the above graph is <strong>0 -> 4 -> 3 -> 2 -> 1</strong>.
+
+<p>A <strong>cycle</strong> is a trail that begins and ends at the same vertex and doesn't contain any other repeat vertices. An example of a cycle in the above graph is <strong>0 -> 1 -> 2 -> 3 -> 0</strong>.</p> 
+
+An <strong>acyclic graph</strong> has no cycles. The above graph is <strong>cyclic</strong>. It contains several cycles.</p>
+
+<p>A graph is <strong>connected</strong> if and only if, for every pair of vertices u and v, there is a path from u to v. The above graph is connected.</p>
+
+<p>A <strong>tree</strong> is a connected, acyclic graph.</p>
+
+<p>A tree <strong>spans</strong> a connected graph if and only if it contains all of the vertices of that graph. A <strong>spanning tree</strong> of a connected graph is a tree that spans the graph.
+
+<p>Now we can use these definitions to unpack our initial statement of what a minimum spanning tree is:</p>
+
+<p>A minimum spanning tree is a tree. So, a minimum spanning tree is a graph that is (i) connected and (ii) acyclic. That means that (i) each pair of the graph's vertices has a walk between them and that (ii) none of the graph's vertices has a trail going back to itself.</p>
+
+<p>As a spanning tree, a minimum spanning tree spans a connected graph. That means that it contains all of the vertices of that graph.</p>
+
+<p>As a<strong> </strong>minimum spanning tree, a minimum spanning tree has a weight. Its weight is the sum of the weights of its edges. (To be clear, it derives its edges from the graph that it spans.)</p>
+
+<p>What makes a minimum spanning tree be a <strong>minimum</strong> spanning tree is that its weight is less than or equal to the weight of every other spanning tree that spans that graph.</p>
+
+<p>A minimum spanning tree for the above graph is:</p>
+
+<p><img src="/img/span-tree.png" alt="minimum spanning tree" width="400" height="250"></p>
+
+<p>Hopefully, that clears up what a minimum spanning tree is. Now for the next question: Why are minimum spanning trees important?</p>
+
+<p>Let's say there is a set of computers that you want to network together. Because it's expensive to network computers together, you want to find the least expensive way to connect all of them. In other words, you want to construct a minimum spanning tree! In general, minimum spanning trees let you connect a set of things that are costly to connect at the least possible expense. You can apply minimum spanning trees to road construction, social networks, circuit design, etc., etc.</p>
+
+<p>Now your question should be: How do I find minimum spanning trees? The two most popular algorithms are <a href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim's algorithm</a> and <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Kruskal's algorithm</a>. I go over Kruskal's algorithm in <a href="kruskal.html">this post</a>.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

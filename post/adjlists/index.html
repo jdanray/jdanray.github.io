@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Adjacency Lists" />
+<meta property="og:description" content="If you aren&#39;t familiar with graph theory, I advise you to read my post on minimum spanning trees, where I define several important graph-theoretic terms that are relevant to this entry.
+There are a number of ways to represent a graph. For example, you can represent a graph as an adjacency matrix, as an edge list, or as an adjacency list. In my Python implementation of Kruskal&#39;s algorithm, I used an edge list." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/adjlists/" />
+<meta property="article:published_time" content="2020-07-18T15:02:36-05:00" />
+<meta property="article:modified_time" content="2020-07-18T15:02:36-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Adjacency Lists"/>
+<meta name="twitter:description" content="If you aren&#39;t familiar with graph theory, I advise you to read my post on minimum spanning trees, where I define several important graph-theoretic terms that are relevant to this entry.
+There are a number of ways to represent a graph. For example, you can represent a graph as an adjacency matrix, as an edge list, or as an adjacency list. In my Python implementation of Kruskal&#39;s algorithm, I used an edge list."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Adjacency Lists | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">18</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Adjacency Lists</h1>
+</div>
+</div>
+<div class="markdown">
+<p>If you aren't familiar with graph theory, I advise you to read <a href="../mst/">my post on minimum spanning trees</a>, where I define several important graph-theoretic terms that are relevant to this entry.</p>
+
+<p>There are a number of ways to represent a graph. For example, you can represent a graph as <a href="https://en.wikipedia.org/wiki/Adjacency_matrix">an adjacency matrix</a>, as <a href="https://en.wikipedia.org/wiki/Edge_list">an edge list</a>, or as an adjacency list. In <a href="https://github.com/jdanray/blog-code/blob/master/algos/kruskal.py">my Python implementation of Kruskal's algorithm</a>, I used an edge list.</p>
+
+<p>Today I will discuss adjacency lists, because I'm going to use adjacency lists in some algorithms that I will post about soon.</p>
+
+<p>The idea of an adjacency list is very simple. In its most basic form, an adjacency list is just a list that contains the adjacent vertices for a graph's vertices. For example, say that we have the following graph:</p>
+
+<p><img src="/img/numgraph.png" alt="numgraph"></p>
+
+<p>We can represent this graph by the adjacency list A = [[1, 2, 4], [0, 2], [0, 1, 5], [4], [0, 5, 6], [2, 4], [4]].</p> 
+
+<p>So, for vertex 0, we have A[0] = [1, 2, 4], which corresponds to the vertices that 0 is adjacent to in the graph. Likewise, for vertex 1, we have A[1] = [0, 2], which corresponds to the vertices that 1 is adjacent to. The same goes for all the other vertices. If we want to know which vertices are adjacent to a vertex v, then A[v] will give us the list of vertices adjacent to v.</p>
+
+<p>More precisely, A[v] is the list of vertices that v has an <i>out-edge</i> to. We can use adjacency lists to represent <a href="https://en.wikipedia.org/wiki/Directed_graph">directed graphs</a>. In an undirected graph, we have edges <i>between</i> vertices. In a directed graph, we have edges <i>from</i> and <i>to</i> vertices. For example:</p> 
+
+<p><img src="/img/digraph.png" alt="digraph" height="275" width="400"></p>
+
+<p>Here, the adjacency list is D = [[3], [0], [1], [4], [0]]. So, there is an edge <i>from</i> 0 <i>to</i> 3. However, there is no edge from 3 to 0. The edges have directions. Even if u is an element of D[v], v is not necessarily an element of D[u]. For example, 3 is an element of D[0], but 0 is not an element of D[3]. In contrast, in our first, undirected graph, if u was an element of A[v], then v was necessarily an element of A[u]. For example, because 1 is an element of A[0], 0 is an element of A[1].</p>
+
+<p>You can represent <a href="https://mathworld.wolfram.com/WeightedGraph.html">a weighted graph</a> with a list of lists of vertex-weight pairs. For example:</p>
+
+<p><img src="/img/wt-digraph.png" alt="wt-digraph" height="275" width="400"></p>  
+
+<p>We can represent this graph as W = [[[1, 3], [3, 7], [4, 8]], [[2, 1], [3, 4]], [], [[2, 2]], [[3, 3]]].</p> 
+
+<p>So, W[0] = [[1, 3], [3, 7], [4, 8]], which represents the fact that vertex 0 has an edge to vertex 1 of weight 3, an edge to vertex 3 of weight 7, and an edge to vertex 4 of weight 8.</p>
+
+<p>If the graph's vertices aren't numbered and you don't want to create a correspondence between the vertices and the nonnegative integers, then you can very easily implement an adjacency list with an associative array. The associative array's keys will be the vertices' names, and its values will be the names of adjacent vertices.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

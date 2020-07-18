@@ -6,10 +6,22 @@
     <description>Recent content in Posts on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jul 2020 17:17:04 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2020 18:07:51 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>There are more real numbers than natural numbers</title>
+      <link>https://jdanray.github.io/post/numbers/</link>
+      <pubDate>Sat, 18 Jul 2020 18:07:51 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/numbers/</guid>
+      <description>
+      
+      The natural numbers are the numbers 1, 2, 3, 4, 5, .... Real numbers are numbers such as 10.4541, 1, -2358.541, etc., et...
+      
+      </description>
+    </item>
     <item>
       <title>Monty Hall meets Monte Carlo</title>
       <link>https://jdanray.github.io/post/monte/</link>

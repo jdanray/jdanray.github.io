@@ -6,10 +6,22 @@
     <description>Recent content on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jul 2020 15:02:36 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2020 17:17:04 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Monty Hall meets Monte Carlo</title>
+      <link>https://jdanray.github.io/post/monte/</link>
+      <pubDate>Sat, 18 Jul 2020 17:17:04 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/monte/</guid>
+      <description>
+      
+      You can pick between three doors (A, B, and C). One of the doors has a prize behind it. Each of the other two doors has ...
+      
+      </description>
+    </item>
     <item>
       <title>Adjacency Lists</title>
       <link>https://jdanray.github.io/post/adjlists/</link>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Monty Hall meets Monte Carlo" />
+<meta property="og:description" content="You can pick between three doors (A, B, and C). One of the doors has a prize behind it. Each of the other two doors has a goat behind it. If you pick the door that has the prize behind it, then you get the prize. If you pick a door that has a goat behind it, then you better have a lot of goat food.
+Because you have no information on where the prize is, you pick a door at random." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/monte/" />
+<meta property="article:published_time" content="2020-07-18T17:17:04-05:00" />
+<meta property="article:modified_time" content="2020-07-18T17:17:04-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Monty Hall meets Monte Carlo"/>
+<meta name="twitter:description" content="You can pick between three doors (A, B, and C). One of the doors has a prize behind it. Each of the other two doors has a goat behind it. If you pick the door that has the prize behind it, then you get the prize. If you pick a door that has a goat behind it, then you better have a lot of goat food.
+Because you have no information on where the prize is, you pick a door at random."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Monty Hall meets Monte Carlo | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">18</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Monty Hall meets Monte Carlo</h1>
+</div>
+</div>
+<div class="markdown">
+<p>You can pick between three doors (A, B, and C). One of the doors has a prize behind it. Each of the other two doors has a goat behind it. If you pick the door that has the prize behind it, then you get the prize. If you pick a door that has a goat behind it, then you better have a lot of goat food.</p>
+
+<p>Because you have no information on where the prize is, you pick a door at random. Monty Hall, the host of the game that you're playing, opens a different door, showing you that it has a goat behind it. He tells you that you can change your pick to the remaining (unopened) door. Do you want to change your pick? Does it even matter if you change you pick?</p>
+
+<p>My intuition said that it does not matter. You are choosing between two doors, so it seemed to me that you have a 50-50 chance either way. However, I had always heard that you should change your pick. So, I wanted to understand why.</p>
+
+<p>So, I designed, implemented, and executed <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">a Monte Carlo simulation</a> of the Monty Hall problem, and now I understand why you should change your pick. In the course of designing the simulation, I gained insight into the structure of the problem.</p>
+
+<p>For concreteness, let's say that you initially pick Door A. Because you picked Door A at random, there is a 1/3 chance that Door A has the prize behind it.</p>
+
+<p>Monty opens a door to reveal a goat behind it. Let's say that he opens Door C. Because Door C has a goat behind it, there is a 0/3 chance that Door C has the prize behind it.</p>
+
+<p>Probabilities have to sum to 1. There is a 1/3 chance that the prize is behind Door A, your initial pick. There is a 0/3 chance that the prize is behind Door C, the door that Monty opened. So, there is a 2/3 chance that the prize is behind Door B, the remaining door.</p>
+
+<p>So, change your pick to the remaining door.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/monte_carlo/monty_hall.c">The Monte Carlo simulation that I implemented in C</a> corroborates the above reasoning. Over 100,000 trials, the contestant won approximately 1/3 of the time when they stayed with their initial pick and approximately 2/3 of the time when they changed their pick to the remaining door.</p>
+
+<p>The simulation is up at <a href="https://github.com/jdanray/blog-code">my GitHub</a>.</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

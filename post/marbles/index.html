@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="Marbles in Three Baskets and Problem Theory" />
+<meta property="og:description" content="Marbles in Three Baskets is an ACM-ICPC problem. My solution to it is up at my GitHub.
+Here are my thoughts on the problem and my solution. I start by stating the problem in my own words.
+Imagine that you are playing a game. You are given three baskets. In each basket, there are zero or more marbles. So, for example, Basket #1 may have 3 marbles, Basket #2 may have 0 marbles, and Basket #3 may have 12 marbles." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/marbles/" />
+<meta property="article:published_time" content="2020-07-21T01:06:47-05:00" />
+<meta property="article:modified_time" content="2020-07-21T01:06:47-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Marbles in Three Baskets and Problem Theory"/>
+<meta name="twitter:description" content="Marbles in Three Baskets is an ACM-ICPC problem. My solution to it is up at my GitHub.
+Here are my thoughts on the problem and my solution. I start by stating the problem in my own words.
+Imagine that you are playing a game. You are given three baskets. In each basket, there are zero or more marbles. So, for example, Basket #1 may have 3 marbles, Basket #2 may have 0 marbles, and Basket #3 may have 12 marbles."/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>Marbles in Three Baskets and Problem Theory | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">21</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">Marbles in Three Baskets and Problem Theory</h1>
+</div>
+</div>
+<div class="markdown">
+<p><a href="https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1581">Marbles in Three Baskets</a> is an <a href="https://icpcarchive.ecs.baylor.edu/index.php">ACM-ICPC</a> problem. <a href="https://github.com/jdanray/blog-code/blob/master/problems/marbles.py">My solution to it</a> is up at <a href="https://github.com/jdanray">my GitHub</a>.</p>
+
+<p>Here are my thoughts on the problem and my solution. I start by stating the problem in my own words.</p>
+
+<p>Imagine that you are playing a game. You are given three baskets. In each basket, there are zero or more marbles. So, for example, Basket #1 may have 3 marbles, Basket #2 may have 0 marbles, and Basket #3 may have 12 marbles.</p>
+
+<p>Your goal is to get the same number of marbles into each basket. So, for example, you may want all the baskets to have 5 marbles each.</p>
+
+<p>The game proceeds in rounds, until every basket has the same number of marbles. At each round, you may double the number of marbles in some basket by taking that number of marbles out of another basket and putting them into the basket. So, for example, if Basket #3 has 4 marbles in it and Basket #2 has 7 marbles in it, then you may take 4 marbles out of Basket #2 and put them into Basket #3. Now Basket #3 has double the number of marbles that it had before, while Basket #3 has 4 fewer.</p>
+
+<p>You win the game if and only if you reach your goal in the minimum number of moves. You have to get the same number of marbles in each basket in the fewest possible rounds.</p>
+
+<p>I like this problem, because I think that it illustrates the idea that problem-solving is search.</p>
+
+<p>In that model of problem-solving, a problem is defined by a few elements. Specifically, a problem is composed of:</p>
+
+<p>(1) <strong>A given state</strong>. This is the state of the problem when you start. So, for example, the given state of this ACM-ICPC problem is the number of marbles in each basket at the outset.</p>
+
+<p>(2) <strong>A set of performable actions</strong>. The world of a problem isn't completely static. There's a set of actions that you can perform to transform one state into another. In this case, you can double the number of marbles in a basket. After you perform that action, the state of the problem has changed. One basket has twice as many marbles in it, and another basket has that many fewer marbles in it.</p>
+
+<p>(3) <strong>A goal state</strong>. Eventually, you have to stop. When you reach a state of the problem where your goal is met, you've completed your task. So, here, when each basket has the same number of marbles, we have reached our goal state.</p>
+
+<p>The given state and the set of performable actions induce a graph. The given state is a node in the graph. The performable actions are edges. Edges lead to new states, and each of those states are nodes with edges branching off of them. So, when you perform actions, you effectively explore a graph, moving from state to state, until you reach your goal state. (See <a href="../mst/">my post on minimum spanning trees</a> for a brief introduction to graphs.)</p>
+
+<p>When you solve a problem, you find a solution to it. A solution to a problem is a sequence of actions or states from the given state to the goal state. So, if you want to find the solution to a problem, you can search the space of problem states until you find a path from the given state to the goal state.</p>
+
+<p>In this problem, we consider the number of marbles in the baskets at any given point as the state of the problem at that point. The given state is the initial number of marbles in the baskets. The only allowable action is doubling the number of marbles in a basket. The goal state is reached when each basket has the same number of marbles.</p>
+
+<p>Because we want to get the same number of marbles into every basket in the minimum number of moves, we don't want simply a sequence of actions from the given state to the goal state, but rather the shortest sequence of actions. So, we want to find a shortest path. Consequently, we want to use something like <a href="../bfs/">breadth-first search</a>.</p>
+
+<p>The core of the program is a shortest-path algorithm that is a hybrid of breadth-first search and <a href="../dijkstra/">Dijkstra’s algorithm</a>. It has similarities and dissimilarities to both.</p>
+
+<p>It's dissimilar to both breadth-first search and Dijkstra's algorithm, in that both of them operate on a given graph. Here, we are not given a graph. Instead, we are given an initial node, and we generate the graph on the fly, determining the children of each node as we go.</p>
+
+<p>It's similar to breadth-first search in that it explores nodes that it places onto a <a href="../queues/">queue</a>. Like breadth-first search, it loops through the queue until it either finds a goal node or runs out of nodes.</p>
+
+<p>But breadth-first search tells you just whether a node is in a graph. Here, we want to determine a shortest path from the source node to the goal node. So, we take a cue from Dijkstra's algorithm and keep track of each node's predecessor node.</p>
+
+<p>However, our graph is not weighted. So, unlike Dijkstra's algorithm, we do not keep track of distances.</p>
+
+<p>So, the algorithm is sort of a middle ground between both breadth-first search and Dijkstra's algorithm. I used breadth-first search as a base and then incorporated Dijkstra's algorithm.</p>
+
+<p>Sources:</p>
+
+<p><i>How to Solve Mathematical Problems</i>, by Wayne A. Wicklegren</p>
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

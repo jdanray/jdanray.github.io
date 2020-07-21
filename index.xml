@@ -6,19 +6,20 @@
     <description>Recent content on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jul 2020 18:07:51 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2020 01:06:47 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>There are more real numbers than natural numbers</title>
-      <link>https://jdanray.github.io/post/numbers/</link>
-      <pubDate>Sat, 18 Jul 2020 18:07:51 -0500</pubDate>
+      <title>Marbles in Three Baskets and Problem Theory</title>
+      <link>https://jdanray.github.io/post/marbles/</link>
+      <pubDate>Tue, 21 Jul 2020 01:06:47 -0500</pubDate>
       
-      <guid>https://jdanray.github.io/post/numbers/</guid>
+      <guid>https://jdanray.github.io/post/marbles/</guid>
       <description>
       
-      The natural numbers are the numbers 1, 2, 3, 4, 5, .... Real numbers are numbers such as 10.4541, 1, -2358.541, etc., et...
+      Marbles in Three Baskets is an ACM-ICPC problem. My solution to it is up at my GitHub.
+Here are my thoughts on the probl...
       
       </description>
     </item>
@@ -181,6 +182,18 @@ Breadth-first search is a graph s...
       <description>
       
       A stack is a container, like an array. However, each element of an array can be accessed directly and in constant time. ...
+      
+      </description>
+    </item>
+    <item>
+      <title>There are more real numbers than natural numbers</title>
+      <link>https://jdanray.github.io/post/numbers/</link>
+      <pubDate>Sat, 27 Jun 2020 18:07:51 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/numbers/</guid>
+      <description>
+      
+      The natural numbers are the numbers 1, 2, 3, 4, 5, .... Real numbers are numbers such as 10.4541, 1, -2358.541, etc., et...
       
       </description>
     </item>

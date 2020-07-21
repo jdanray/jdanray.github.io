@@ -90,7 +90,7 @@ There are a number of ways to represent a graph. For example, you can represent 
 
 <p><img src="/img/digraph.png" alt="digraph" height="275" width="400"></p>
 
-<p>Here, the adjacency list is D = [[3], [0], [1], [4], [0]]. So, there is an edge <i>from</i> 0 <i>to</i> 3. However, there is no edge from 3 to 0. The edges have directions. Even if u is an element of D[v], v is not necessarily an element of D[u]. For example, 3 is an element of D[0], but 0 is not an element of D[3]. In contrast, in our first, undirected graph, if u was an element of A[v], then v was necessarily an element of A[u]. For example, because 1 is an element of A[0], 0 is an element of A[1].</p>
+<p>Here, the adjacency list is D = [[3], [0], [1], [4], [0]]. So, there is an edge <i>from</i> 0 <i>to</i> 3. However, there is no edge from 3 to 0. The edges have directions. Even if u is an element of D[v], v is not necessarily an element of D[u]. For example, 3 is an element of D[0], but 0 is not an element of D[3]. In contrast, in our first, undirected graph, if u was an element of A[v], then v was necessarily an element of A[u]. For example, because 1 is an element of A[0], 0 is an element of A[1]. We can say that, in this undirected graph, 1 and 0 both have out-edges to each other, while in the directed graph, 0 has an out-edge to 3, but 3 doesn't have an out-edge to 0.</p>
 
 <p>You can represent <a href="https://mathworld.wolfram.com/WeightedGraph.html">a weighted graph</a> with a list of lists of vertex-weight pairs. For example:</p>
 

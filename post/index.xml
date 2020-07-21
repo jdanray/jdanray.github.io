@@ -6,10 +6,22 @@
     <description>Recent content in Posts on jdanray.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Jul 2020 01:06:47 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2020 01:21:12 -0500</lastBuildDate>
     
     <atom:link href="https://jdanray.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>The Sieve of Eratosthenes</title>
+      <link>https://jdanray.github.io/post/sieve/</link>
+      <pubDate>Tue, 21 Jul 2020 01:21:12 -0500</pubDate>
+      
+      <guid>https://jdanray.github.io/post/sieve/</guid>
+      <description>
+      
+      Given an integer N  1, you want to find all of the prime numbers from 1 to N. For example, if N = 11, then you get {2, 3...
+      
+      </description>
+    </item>
     <item>
       <title>Marbles in Three Baskets and Problem Theory</title>
       <link>https://jdanray.github.io/post/marbles/</link>

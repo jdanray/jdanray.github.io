@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+  <meta name="generator" content="Hugo 0.69.2" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="The Stable Marriage Problem" />
+<meta property="og:description" content="The stable marriage problem can be stated as follows:
+Given (a) two sets that have the same number of elements and (b) a set of preferences for each element, find a stable matching between the two sets.
+That is a very general formulation of the problem. The reason that the problem is called &#34;the stable marriage problem&#34; is that one typically formulates the problem in a way similar to the following:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jdanray.github.io/post/marriage/" />
+<meta property="article:published_time" content="2020-07-23T20:37:46-05:00" />
+<meta property="article:modified_time" content="2020-07-23T20:37:46-05:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Stable Marriage Problem"/>
+<meta name="twitter:description" content="The stable marriage problem can be stated as follows:
+Given (a) two sets that have the same number of elements and (b) a set of preferences for each element, find a stable matching between the two sets.
+That is a very general formulation of the problem. The reason that the problem is called &#34;the stable marriage problem&#34; is that one typically formulates the problem in a way similar to the following:"/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/all.css" />
+<link rel="stylesheet" href="https://jdanray.github.io/css/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://jdanray.github.io/js/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://jdanray.github.io/js/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/css/custom.css" /><title>The Stable Marriage Problem | Daniel Ray&#39;s Blog</title></head>
+<body><header>
+
+  <div id="avatar">
+    <a href="https://jdanray.github.io/">
+      <img src="/img/Daniel.png" alt="Daniel Ray&#39;s Blog">
+    </a>
+  </div>
+
+  <div id="titletext"><h2 id="title"><a href="https://jdanray.github.io/">Daniel Ray&#39;s Blog</a></h2></div>
+  <div id="title-description"><p id="subtitle">I like computer science and programming. I hope you enjoy my blog.</p><div id=social>
+    <nav>
+      <ul><li><a href="https://github.com/jdanray"><i title="Github" class="icons fab fa-github"></i></a></li><li><a href="https://www.linkedin.com/in/daniel-ray-055616129/"><i title="LinkedIn" class="icons fab fa-linkedin"></i></a></li></ul>
+    </nav>
+  </div>
+  </div>
+  <div id="mainmenu">
+    <nav>
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/post">All Posts</a></li>
+        
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+<main><div class="post">
+<div class="author">
+
+</div>
+<div class="post-header">
+
+<div class="meta">
+
+<div class="date">
+<span class="day">23</span>
+<span class="rest">Jul 2020</span>
+</div>
+
+</div>
+
+<div class="matter">
+<h1 class="title">The Stable Marriage Problem</h1>
+</div>
+</div>
+<div class="markdown">
+<p>The stable marriage problem can be stated as follows:</p>
+
+<p><strong>Given (a) two sets that have the same number of elements and (b) a set of preferences for each element, find a stable matching between the two sets.</strong></p>
+
+<p>That is a very general formulation of the problem. The reason that the problem is called "the stable marriage problem" is that one typically formulates the problem in a way similar to the following:</p>
+
+<p>Consider a population of people. Half of them are men, and half of them are women. Each man has a list of all of the women ranked according to his preferences, and each woman has a list of all of the men ranked according to her preferences. Find a stable matching that marries everybody off.</p>
+
+<p>In this context, a <b>matching</b> is an assignment of men and women to each other. A matching is <b>unstable</b> if there is a man and a woman who both prefer each other to their spouses. So, for example, if Arthur and Barbara both prefer each other to their spouses, then their marriages are at risk.</p>
+
+<p>A matching is <b>stable</b> if it is not unstable. In a stable matching, nobody has an incentive to seek a different spouse. So, if a man prefers another woman to his wife, he cannot marry her, because she prefers her husband to him.</p>
+
+<p>Everybody is not guaranteed to get their most preferred match. For instance, it is possible that multiple men could most prefer the same woman, but only one man can marry her. So, the problem is simply to find a matching that is stable. And, in 1962, David Gale and Lloyd Shapley provided a way to do that.</p>
+
+<p>The Gale-Shapley algorithm consists of a series of rounds. At each round, each unengaged man proposes to the woman that he prefers the most out of all of the women that have not rejected him. Each woman accepts the proposal of the man that she prefers the most out of all the men that have proposed to her. She rejects every other man who proposed to her. If she had already accepted another man's proposal, then she rejects that man, too, and he becomes unengaged. This process continues until no man can propose anymore.</p>
+
+<p>The process is guaranteed to end. If we have n men and n women, then each of the n men can propose to only n women. So, only n ^ 2 proposals can occur. And at least one man proposes at each round. So, the process terminates after O(n ^ 2) rounds.</p>
+
+<p>The resultant matching is guaranteed to be stable. To see this, suppose that it is unstable. Then there is a man (call him "Arthur") and a woman (call her "Barbara") who both prefer each other to their spouses (call them "Cate" and "Dave"). So, Arthur prefers Barbara to his wife Cate, and Barbara prefers Arthur to her husband Dave. But if Arthur prefers Barbara to Cate, then Arthur proposed to Barbara before he proposed to Cate, since men propose to women in order of preference. Barbara may have accepted Arthur's proposal at first, but, because Barbara is married to Dave, Barbara must have rejected Arthur and accepted Dave's proposal, which means that Barbara prefers Dave to Arthur. So, Barbara and Arthur do not both prefer each other to their spouses, because Barbara does not prefer Arthur to her spouse. So, we have a contradiction. Therefore, there is not a man and a woman who both prefer each other to their spouses, and the matching is stable.</p>
+
+<p>As the general formulation of the problem suggests, the stable marriage problem applies to more than just pairing off men and women. It appears in many guises in many places. For example, in 2004, New York City began using a version of the Gale-Shapley algorithm to match eighth graders and NYC public high schools, and the U.S. medical establishment has long used a version of the Gale-Shapley algorithm to match medical students and residency programs.</p>
+
+<p><a href="https://github.com/jdanray/blog-code/blob/master/algos/gale_shapley.py">My implementation of the Gale-Shapley algorithm</a> is up at <a href="https://github.com/jdanray/blog-code/">my GitHub</a>.</p>
+
+<p>Sources:</p>
+
+<p><a href="http://www.ams.org/samplings/feature-column/fc-2015-03">http://www.ams.org/samplings/feature-column/fc-2015-03</a></p>
+<p><a href="http://www1.cs.columbia.edu/~evs/intro/stable/writeup.html">http://www1.cs.columbia.edu/~evs/intro/stable/writeup.html</a></p>
+<p><a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/readings/MIT6_042JF10_notes.pdf">http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/readings/MIT6_042JF10_notes.pdf</a></p>
+
+
+</div>
+<div class="tags">
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+
+</main><footer>
+
+
+
+</footer>
+</body>
+</html>

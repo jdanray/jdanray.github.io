@@ -8,7 +8,7 @@
 <meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="The Stable Marriage Problem" />
 <meta property="og:description" content="The stable marriage problem can be stated as follows:
 Given (a) two sets that have the same number of elements and (b) a set of preferences for each element, find a stable matching between the two sets.
-That is a very general formulation of the problem. The reason that the problem is called &#34;the stable marriage problem&#34; is that one typically formulates the problem in a way similar to the following:" />
+That is a very general formulation of the problem. The reason that the problem is called &#34;the stable marriage problem&#34; is that the problem is usually formulated like this: Consider a population of people." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jdanray.github.io/post/marriage/" />
 <meta property="article:published_time" content="2020-07-23T20:37:46-05:00" />
@@ -17,7 +17,7 @@ That is a very general formulation of the problem. The reason that the problem i
 <meta name="twitter:title" content="The Stable Marriage Problem"/>
 <meta name="twitter:description" content="The stable marriage problem can be stated as follows:
 Given (a) two sets that have the same number of elements and (b) a set of preferences for each element, find a stable matching between the two sets.
-That is a very general formulation of the problem. The reason that the problem is called &#34;the stable marriage problem&#34; is that one typically formulates the problem in a way similar to the following:"/>
+That is a very general formulation of the problem. The reason that the problem is called &#34;the stable marriage problem&#34; is that the problem is usually formulated like this: Consider a population of people."/>
 
   <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/normalize.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="https://jdanray.github.io/css/main.css" />
@@ -78,19 +78,19 @@ That is a very general formulation of the problem. The reason that the problem i
 
 <p><strong>Given (a) two sets that have the same number of elements and (b) a set of preferences for each element, find a stable matching between the two sets.</strong></p>
 
-<p>That is a very general formulation of the problem. The reason that the problem is called "the stable marriage problem" is that one typically formulates the problem in a way similar to the following:</p>
+<p>That is a very general formulation of the problem. The reason that the problem is called "the stable marriage problem" is that the problem is usually formulated like this:
 
 <p>Consider a population of people. Half of them are men, and half of them are women. Each man has a list of all of the women ranked according to his preferences, and each woman has a list of all of the men ranked according to her preferences. Find a stable matching that marries everybody off.</p>
 
 <p>In this context, a <b>matching</b> is an assignment of men and women to each other. A matching is <b>unstable</b> if there is a man and a woman who both prefer each other to their spouses. So, for example, if Arthur and Barbara both prefer each other to their spouses, then their marriages are at risk.</p>
 
-<p>A matching is <b>stable</b> if it is not unstable. In a stable matching, nobody has an incentive to seek a different spouse. So, if a man prefers another woman to his wife, he cannot marry her, because she prefers her husband to him.</p>
+<p>A matching is <b>stable</b> if it is not unstable. In a stable matching, nobody has an incentive to seek a different spouse, because no two people prefer each other to their spouses. So, if Alan prefers Betsy to his wife, he can't marry her, because she prefers her husband to him.</p>
 
-<p>Everybody is not guaranteed to get their most preferred match. For instance, it is possible that multiple men could most prefer the same woman, but only one man can marry her. So, the problem is simply to find a matching that is stable. And, in 1962, David Gale and Lloyd Shapley provided a way to do that.</p>
+<p>Everybody is not guaranteed to get their most preferred match. For instance, multiple men might all have the same woman as their highest preference, but only one man can marry her. So, the problem is simply to find a matching that is stable. And, in 1962, David Gale and Lloyd Shapley provided a way to do that.</p>
 
-<p>The Gale-Shapley algorithm consists of a series of rounds. At each round, each unengaged man proposes to the woman that he prefers the most out of all of the women that have not rejected him. Each woman accepts the proposal of the man that she prefers the most out of all the men that have proposed to her. She rejects every other man who proposed to her. If she had already accepted another man's proposal, then she rejects that man, too, and he becomes unengaged. This process continues until no man can propose anymore.</p>
+<p>The Gale-Shapley algorithm consists of a series of rounds. At each round, each unengaged man proposes to the woman that he prefers the most out of all of the women that haven't rejected him yet. Each woman accepts the proposal of the man that she prefers the most, and she rejects every other proposal. If she had already accepted another proposal, then she rejects that proposal, too, and that man becomes unengaged. Then this process continues, until no man is unengaged.</p>
 
-<p>The process is guaranteed to end. If we have n men and n women, then each of the n men can propose to only n women. So, only n ^ 2 proposals can occur. And at least one man proposes at each round. So, the process terminates after O(n ^ 2) rounds.</p>
+<p>The process is guaranteed to end. If we have N men and N women, then each of the N men can propose to only N women. So, only N ^ 2 proposals can occur. And at least one man proposes at each round. So, the process terminates after O(N ^ 2) rounds.</p>
 
 <p>The resultant matching is guaranteed to be stable. To see this, suppose that it is unstable. Then there is a man (call him "Arthur") and a woman (call her "Barbara") who both prefer each other to their spouses (call them "Cate" and "Dave"). So, Arthur prefers Barbara to his wife Cate, and Barbara prefers Arthur to her husband Dave. But if Arthur prefers Barbara to Cate, then Arthur proposed to Barbara before he proposed to Cate, since men propose to women in order of preference. Barbara may have accepted Arthur's proposal at first, but, because Barbara is married to Dave, Barbara must have rejected Arthur and accepted Dave's proposal, which means that Barbara prefers Dave to Arthur. So, Barbara and Arthur do not both prefer each other to their spouses, because Barbara does not prefer Arthur to her spouse. So, we have a contradiction. Therefore, there is not a man and a woman who both prefer each other to their spouses, and the matching is stable.</p>
 
@@ -103,7 +103,6 @@ That is a very general formulation of the problem. The reason that the problem i
 <p><a href="http://www.ams.org/samplings/feature-column/fc-2015-03">http://www.ams.org/samplings/feature-column/fc-2015-03</a></p>
 <p><a href="http://www1.cs.columbia.edu/~evs/intro/stable/writeup.html">http://www1.cs.columbia.edu/~evs/intro/stable/writeup.html</a></p>
 <p><a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/readings/MIT6_042JF10_notes.pdf">http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/readings/MIT6_042JF10_notes.pdf</a></p>
-
 
 </div>
 <div class="tags">

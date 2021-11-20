@@ -1,146 +1,88 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://jdanray.github.io/</loc>
     <lastmod>2020-07-23T20:37:46-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/</loc>
     <lastmod>2020-07-23T20:37:46-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/marriage/</loc>
     <lastmod>2020-07-23T20:37:46-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/sieve/</loc>
     <lastmod>2020-07-21T01:21:12-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/marbles/</loc>
     <lastmod>2020-07-21T01:06:47-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/monte/</loc>
     <lastmod>2020-07-18T17:17:04-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/adjlists/</loc>
     <lastmod>2020-07-18T15:02:36-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/disjointset/</loc>
     <lastmod>2020-07-12T18:42:33-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/kruskal/</loc>
     <lastmod>2020-07-12T18:37:29-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/mst/</loc>
     <lastmod>2020-07-12T16:59:05-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/vertexcolor/</loc>
     <lastmod>2020-07-11T00:07:17-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/nqueens/</loc>
     <lastmod>2020-07-11T00:00:08-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/simulanneal/</loc>
     <lastmod>2020-07-10T22:25:49-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/quines/</loc>
     <lastmod>2020-07-08T21:54:15-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/dijkstra/</loc>
     <lastmod>2020-07-08T00:37:14-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/bfs/</loc>
     <lastmod>2020-07-07T00:06:35-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/queues/</loc>
     <lastmod>2020-07-06T00:14:11-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/stacks/</loc>
     <lastmod>2020-07-06T00:12:47-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/numbers/</loc>
     <lastmod>2020-06-27T18:07:51-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/turing/</loc>
     <lastmod>2020-06-19T18:18:27-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/pnp/</loc>
     <lastmod>2020-06-19T18:00:18-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/knn/</loc>
     <lastmod>2020-06-19T17:50:24-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/loop/</loc>
     <lastmod>2020-05-20T23:40:27-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/leetcode/</loc>
     <lastmod>2020-05-11T17:41:20-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/post/id3/</loc>
     <lastmod>2020-05-11T00:44:24-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/about/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/series/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jdanray.github.io/tags/</loc>
   </url>
-  
 </urlset>

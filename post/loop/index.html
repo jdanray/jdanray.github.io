@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 
-  <meta name="generator" content="Hugo 0.82.1" />
+  <meta name="generator" content="Hugo 0.105.0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,15 +75,15 @@
 <p>The famous computer scientist Edsger Dijkstra pioneered an approach to programming that can decrease the presence of bugs and increase your confidence in your programs. David Gries systematized Dijkstra&rsquo;s approach, and I will provide you with an informal explanation of his system. I will restrict the focus to how to design loops. The entire system is too big to cover in one blog post. I choose loops because they are very important.</p>
 <p>This approach isn&rsquo;t the end-all, be-all. Programming is difficult. It requires many different techniques. However, the following method can help you in many situations. The time spent running test cases, looking through output, and searching for errors could be spent in other ways.</p>
 <p>Let&rsquo;s begin by examining a simple while-loop:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int N = nums.length;
-	int i = 0;
-	int s = 0;
-	while (i != N)
-	{
-		s += nums[i];
-		i++;
-	}
-</code></pre></div><p>The purpose of this loop is to sum the elements of a given integer array, nums. The loop has six parts:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>	int N = nums.length;
+</span></span><span style="display:flex;"><span>	int i = 0;
+</span></span><span style="display:flex;"><span>	int s = 0;
+</span></span><span style="display:flex;"><span>	while (i != N)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		s += nums[i];
+</span></span><span style="display:flex;"><span>		i++;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>The purpose of this loop is to sum the elements of a given integer array, nums. The loop has six parts:</p>
 <p><strong>(1) Precondition</strong></p>
 <p>A precondition describes the initial state of the program. In this case, the precondition is that nums is an array of N integers (where N &gt;= 0).</p>
 <p><strong>(2) Postcondition</strong></p>
@@ -95,9 +95,9 @@
 <p>You don&rsquo;t need to worry about how we found this. I will explain how to arrive at loop invariants in more detail soon.</p>
 <p><strong>(4) Initialization</strong></p>
 <p>Initialization establishes the loop invariant. In this case, the initialization is:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int i = 0;
-	int s = 0; 
-</code></pre></div><p>After this initialization, the loop invariant is true. When i == 0, we have nums[0..-1], which is an empty array. We define the sum of an empty array to equal 0, so the loop invariant holds.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>	int i = 0;
+</span></span><span style="display:flex;"><span>	int s = 0; 
+</span></span></code></pre></div><p>After this initialization, the loop invariant is true. When i == 0, we have nums[0..-1], which is an empty array. We define the sum of an empty array to equal 0, so the loop invariant holds.</p>
 <p><strong>(5) Termination condition</strong></p>
 <p>The termination condition is simply the condition in which the loop terminates. In this case, the termination condition is i == N. While i != N, the loop executes. When i == N, the loop terminates.</p>
 <p>The loop invariant and the termination condition are all that is necessary to ensure that, if the loop terminates, it terminates in a state that satisfies the postcondition. For instance, when both our loop invariant and termination condition are true, we have</p>
@@ -108,9 +108,9 @@
 <p><em>The key to writing loops is to develop loop invariants and termination conditions that ensure the postcondition. Before we write any code, we want to have those two things in hand.</em></p>
 <p><strong>(6) Loop body</strong></p>
 <p>The loop body is the sequence of statements executed during an iteration of the loop. In this case, the loop body is:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	s += nums[i];
-	i++;
-</code></pre></div><p>Because the loop invariant and the termination condition ensure the postcondition, the loop body just has two purposes:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>	s += nums[i];
+</span></span><span style="display:flex;"><span>	i++;
+</span></span></code></pre></div><p>Because the loop invariant and the termination condition ensure the postcondition, the loop body just has two purposes:</p>
 <p>(a) Make progress toward termination<br>
 (b) Maintain the loop invariant</p>
 <p>The statement <code>i++;</code> makes progress toward termination. Initially, i == 0, and the loop terminates when i == N. So, the statement <code>i++;</code> ensures that the loop gets closer to termination with each iteration.</p>
@@ -140,10 +140,10 @@ Explanation: The longest increasing subarray is [1,3,5], and its length is 3.</p
 <p>For more strategies for developing loop invariants, see <em>The Science of Programming</em>, by David Gries. Gries discusses several rules for mechanically deriving loop invariants.</p>
 <p><strong>(4) Initialize the loop invariant</strong></p>
 <p>We want to traverse the whole array. So, we begin at i == 0. Now we must assign values to m and l so that the loop invariant is initially true. The following statements will serve as a good initialization:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	int i = 0;
-	int m = 0;
-	int l = 0;
-</code></pre></div><p>When i == 0, we have nums[0..-1] and nums[-1]. We define the length of the longest increasing subarray in an empty array (like nums[0..-1]) to be equal to 0. We define the length of the increasing subarray that ends at a location outside of nums (like nums[-1]) to be equal to 0. So, after these statements are executed, the loop invariant is true.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>	int i = 0;
+</span></span><span style="display:flex;"><span>	int m = 0;
+</span></span><span style="display:flex;"><span>	int l = 0;
+</span></span></code></pre></div><p>When i == 0, we have nums[0..-1] and nums[-1]. We define the length of the longest increasing subarray in an empty array (like nums[0..-1]) to be equal to 0. We define the length of the increasing subarray that ends at a location outside of nums (like nums[-1]) to be equal to 0. So, after these statements are executed, the loop invariant is true.</p>
 <p><strong>(5) Derive the termination condition</strong></p>
 <p>We can formulate the postcondition this way:</p>
 <p>     (m == the length of the longest increasing subarray in nums[0..i - 1]) and (i == N)</p>
@@ -151,31 +151,31 @@ Explanation: The longest increasing subarray is [1,3,5], and its length is 3.</p
 <p><strong>(6) Determine the loop body</strong></p>
 <p>Our priority is to make progress toward termination. If progress falsifies the loop invariant, then we restore it. In this way we both make progress toward termination and maintain the loop invariant.</p>
 <p>The following statement obviously makes progess toward termination:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">	i++;
-</code></pre></div><p>However, that statement may falsify our loop invariant. Unless we update l and m at each iteration, we have no guarantee that the loop invariant will remain true after we increment i.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>	i++;
+</span></span></code></pre></div><p>However, that statement may falsify our loop invariant. Unless we update l and m at each iteration, we have no guarantee that the loop invariant will remain true after we increment i.</p>
 <p><em>Update l:</em> We want the loop invariant to remain true for l when the i-th iteration ends. When the i-th iteration begins, we have that l == the length of the increasing subarray that ends at nums[i - 1]. If nums[i] &gt; nums[i - 1], then the length of the increasing subarray that ends at nums[i] is equal to l + 1. Otherwise, the length is just 1. We maintain the first part of the loop invariant.</p>
 <p><em>Update m:</em> If the increasing subarray that ends at nums[i] is longer than any increasing subarray that ends before nums[i], then it&rsquo;s the longest increasing subarray in nums[0..i]. We have that m == the length of the longest increasing subarray in nums[0..i - 1]. So, to keep m up to date for the i-th iteration, we compare m and l and then set m to the larger of the two. We maintain the second part of the loop invariant.</p>
 <p>Now let&rsquo;s put all of the pieces together. We get the following program:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public int lengthOfLIS(int[] nums) {
-	int N = nums.length;
-
-	int i = 0;
-	int m = 0;
-	int l = 0;
-
-	while (i != N) {
-		if (i &gt; 0 &amp;&amp; nums[i] &gt; nums[i - 1])
-			l++;
-		else
-			l = 1;
-
-		m = Math.max(m, l);
-		i++;
-	}
-
-	return m;
-}
-</code></pre></div><p><strong>Summary:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>public int lengthOfLIS(int[] nums) {
+</span></span><span style="display:flex;"><span>	int N = nums.length;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	int i = 0;
+</span></span><span style="display:flex;"><span>	int m = 0;
+</span></span><span style="display:flex;"><span>	int l = 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	while (i != N) {
+</span></span><span style="display:flex;"><span>		if (i &gt; 0 &amp;&amp; nums[i] &gt; nums[i - 1])
+</span></span><span style="display:flex;"><span>			l++;
+</span></span><span style="display:flex;"><span>		else
+</span></span><span style="display:flex;"><span>			l = 1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		m = Math.max(m, l);
+</span></span><span style="display:flex;"><span>		i++;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	return m;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Summary:</strong></p>
 <p>The pre- and postconditions define the problem. The program will begin in a state characterized by the precondition, and it must terminate in a state that satisfies the postcondition. The loop invariant and the termination condition should imply the postcondition, and we can derive them from the postcondition. The loop invariant must be true before and after each iteration of the loop. The initialization makes the loop invariant true before any iteration, and the loop body maintains the truth of the loop invariant and makes progress toward termination. Derive the loop invariant and the termination condition before you begin writing code.</p>
 <p><em>Our method for writing a loop:</em></p>
 <p>(1) Define the precondition <br>

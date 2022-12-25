@@ -83,7 +83,7 @@ It is easy to construct the list of all integers from 1 to N."/>
 
 <p>Every composite number k has a prime factor that is less than or equal to sqrt(k). To see this, consider any composite number k = m * n. If both m > sqrt(k) and n > sqrt(k), then k < m * n. But k = m * n. So, k must have a prime factor that is less than or equal to sqrt(k).</p>
 
-<p>So, we iterate to sqrt(N). Initially, each integer is marked as a prime. When we visit an integer, we unmark all of its multiples. In this way we remove all of the composite numbers. The prime numbers are the only numbers that are remaining.</p>
+<p>So, we iterate to sqrt(N). Initially, each integer is marked as a prime. When we visit an integer, we unmark all of its multiples. In this way we remove all of the composite numbers. The prime numbers are the numbers that remain.</p>
 
 <p><a href="https://github.com/jdanray/blog-code/blob/master/algos/sieve.c">I implemented the Sieve of Eratosthenes in C</a>, and <a href="https://github.com/jdanray/blog-code/blob/master/algos/sieve.py">I implemented the Sieve of Eratosthenes in Python</a>.</p> 
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="keywords" content="hugo,vitae,theme,static"><meta name="description" content=""><meta property="og:title" content="The Sieve of Eratosthenes" />
-<meta property="og:description" content="Given an integer N &gt; 1, you want to find all of the prime numbers from 1 to N. For example, if N == 11, then you get {2, 3, 5, 7, 11}.
+<meta property="og:description" content="Given an integer N &gt; 1, you want to find all of the prime numbers from 1 to N. For example, if N = 11, then you get {2, 3, 5, 7, 11}.
 The Sieve of Eratosthenes is a simple way to solve this problem. The basic idea behind it is this: Construct the list of all integers from 1 to N, and remove the composite numbers.
 It is easy to construct the list of all integers from 1 to N." />
 <meta property="og:type" content="article" />
@@ -16,7 +16,7 @@ It is easy to construct the list of all integers from 1 to N." />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The Sieve of Eratosthenes"/>
-<meta name="twitter:description" content="Given an integer N &gt; 1, you want to find all of the prime numbers from 1 to N. For example, if N == 11, then you get {2, 3, 5, 7, 11}.
+<meta name="twitter:description" content="Given an integer N &gt; 1, you want to find all of the prime numbers from 1 to N. For example, if N = 11, then you get {2, 3, 5, 7, 11}.
 The Sieve of Eratosthenes is a simple way to solve this problem. The basic idea behind it is this: Construct the list of all integers from 1 to N, and remove the composite numbers.
 It is easy to construct the list of all integers from 1 to N."/>
 
@@ -75,15 +75,15 @@ It is easy to construct the list of all integers from 1 to N."/>
 </div>
 </div>
 <div class="markdown">
-<p>Given an integer N > 1, you want to find all of the prime numbers from 1 to N. For example, if N == 11, then you get {2, 3, 5, 7, 11}.</p>
+<p>Given an integer N > 1, you want to find all of the prime numbers from 1 to N. For example, if N = 11, then you get {2, 3, 5, 7, 11}.</p>
 
 <p><a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">The Sieve of Eratosthenes</a> is a simple way to solve this problem. The basic idea behind it is this: Construct the list of all integers from 1 to N, and remove the composite numbers.</p>
 
 <p>It is easy to construct the list of all integers from 1 to N. So, the question is: How do you remove the composite numbers?</p>
 
-<p>It is a fact of number theory that every composite number k has a prime factor that is less than or equal to sqrt(k). To see this, consider any composite number k = m * n. If both m > sqrt(k) and n > sqrt(k), then k < m * n, which contradicts the fact that k = m * n. So, k must have a prime factor that is less than or equal to sqrt(k).</p>
+<p>Every composite number k has a prime factor that is less than or equal to sqrt(k). To see this, consider any composite number k = m * n. If both m > sqrt(k) and n > sqrt(k), then k < m * n. But k = m * n. So, k must have a prime factor that is less than or equal to sqrt(k).</p>
 
-<p>So, every composite number from 1 to N must have a prime factor that is less than or equal to sqrt(N). So, just iterate over each prime number from 1 to sqrt(N) and remove all of its multiples in the list. In that way you remove all of the composite numbers from the list.</p>
+<p>So, we iterate to sqrt(N). Initially, each integer is marked as a prime. When we visit an integer, we unmark all of its multiples. In this way we remove all of the composite numbers. The prime numbers are the only numbers that are remaining.</p>
 
 <p><a href="https://github.com/jdanray/blog-code/blob/master/algos/sieve.c">I implemented the Sieve of Eratosthenes in C</a>, and <a href="https://github.com/jdanray/blog-code/blob/master/algos/sieve.py">I implemented the Sieve of Eratosthenes in Python</a>.</p> 
 
